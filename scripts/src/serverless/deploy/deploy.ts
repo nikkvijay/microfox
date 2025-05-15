@@ -116,6 +116,7 @@ async function deployPackageSls(packagePath: string): Promise<boolean> {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'microfox-api-key': `${process.env.MICROFOX_API_KEY}`,
         },
         body: JSON.stringify({ ...functionMetadata }),
       });

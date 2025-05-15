@@ -36,6 +36,7 @@ async function removePackageSls(packagePath: string): Promise<boolean> {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
+          'microfox-api-key': `${process.env.MICROFOX_API_KEY}`,
         },
       }
     );

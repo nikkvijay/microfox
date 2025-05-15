@@ -4,10 +4,7 @@
     "title": "Notion Official",
     "description": "Official Notion API client for managing pages, databases, blocks, and users.",
     "path": "packages/@ext_@notionhq#client",
-    "dependencies": [
-      "@types/node-fetch",
-      "node-fetch"
-    ],
+    "dependencies": ["@types/node-fetch", "node-fetch"],
     "status": "semiStable",
     "authEndpoint": "",
     "documentation": "https://www.npmjs.com/package/@notionhq/client",
@@ -58,9 +55,7 @@
     "keysInfo": [
       {
         "key": "NOTION_TOKEN",
-        "constructors": [
-          "Client"
-        ],
+        "constructors": ["Client"],
         "description": "The token for the Notion API",
         "required": true
       }
@@ -132,9 +127,7 @@
     "keysInfo": [
       {
         "key": "SLACK_TOKEN",
-        "constructors": [
-          "WebClient"
-        ],
+        "constructors": ["WebClient"],
         "description": "The token for the Slack Web Client",
         "required": true
       }
@@ -148,15 +141,9 @@
     "title": "Microfox AI SDK",
     "description": "Microfox adapter for the Vercel AI SDK",
     "path": "packages/ai-sdk",
-    "dependencies": [
-      "@microfox/core",
-      "zod",
-      "ai"
-    ],
+    "dependencies": ["@microfox/core", "zod", "ai"],
     "status": "partial",
-    "apiKeys": [
-      "OPENAI_API_KEY"
-    ],
+    "apiKeys": ["OPENAI_API_KEY"],
     "extraInfo": []
   },
   {
@@ -164,16 +151,9 @@
     "title": "Microfox Apollo",
     "description": "Microfox SDK for Apollo.io",
     "path": "packages/apollo",
-    "dependencies": [
-      "@microfox/core",
-      "ky",
-      "p-throttle",
-      "zod"
-    ],
+    "dependencies": ["@microfox/core", "ky", "p-throttle", "zod"],
     "status": "partial",
-    "apiKeys": [
-      "APOLLO_API_KEY"
-    ],
+    "apiKeys": ["APOLLO_API_KEY"],
     "extraInfo": []
   },
   {
@@ -181,11 +161,7 @@
     "title": "Microfox AWS SES",
     "description": "A lightweight, type-safe SDK for interacting with AWS Simple Email Service (SES)",
     "path": "packages/aws-ses",
-    "dependencies": [
-      "@microfox/rest-sdk",
-      "crypto",
-      "zod"
-    ],
+    "dependencies": ["@microfox/rest-sdk", "crypto", "zod"],
     "status": "stable",
     "authEndpoint": "/connect/aws",
     "documentation": "https://www.npmjs.com/package/@microfox/aws-ses",
@@ -194,11 +170,7 @@
       "title": "Microfox AWS SES",
       "description": "The full README for the Microfox AWS SES",
       "path": "https://github.com/microfox-ai/microfox/blob/main/packages/aws-ses/README.md",
-      "functionalities": [
-        "createSESSdk",
-        "sendEmail",
-        "sendBulkEmails"
-      ],
+      "functionalities": ["createSESSdk", "sendEmail", "sendBulkEmails"],
       "all_readmes": [
         {
           "path": "https://github.com/microfox-ai/microfox/blob/main/packages/aws-ses/docs/createSESSdk.md",
@@ -242,26 +214,19 @@
             "description": "The AWS secret access key. Used to authenticate with AWS SES."
           }
         ],
-        "functionalities": [
-          "sendEmail",
-          "sendBulkEmails"
-        ]
+        "functionalities": ["sendEmail", "sendBulkEmails"]
       }
     ],
     "keysInfo": [
       {
         "key": "AWS_ACCESS_KEY_ID",
-        "constructors": [
-          "createSESSdk"
-        ],
+        "constructors": ["createSESSdk"],
         "description": "The AWS access key ID.  Used to authenticate with AWS SES.",
         "required": true
       },
       {
         "key": "AWS_SECRET_ACCESS_KEY",
-        "constructors": [
-          "createSESSdk"
-        ],
+        "constructors": ["createSESSdk"],
         "description": "The AWS secret access key. Used to authenticate with AWS SES.",
         "required": true
       }
@@ -276,15 +241,9 @@
     "title": "Microfox Bing",
     "description": "Microfox SDK for Bing search",
     "path": "packages/bing",
-    "dependencies": [
-      "@microfox/core",
-      "ky",
-      "zod"
-    ],
+    "dependencies": ["@microfox/core", "ky", "zod"],
     "status": "partial",
-    "apiKeys": [
-      "BING_API_KEY"
-    ],
+    "apiKeys": ["BING_API_KEY"],
     "extraInfo": []
   },
   {
@@ -292,9 +251,7 @@
     "title": "Brave TypeScript SDK",
     "description": "TypeScript SDK for the Brave search API, providing functions for web search, summarizer search, image search, video search, news search, suggestions, and spellcheck.",
     "path": "packages/brave",
-    "dependencies": [
-      "zod"
-    ],
+    "dependencies": ["zod"],
     "status": "stable",
     "authEndpoint": "",
     "oauth2Scopes": [],
@@ -402,9 +359,7 @@
     "keysInfo": [
       {
         "key": "BRAVE_API_KEY",
-        "constructors": [
-          "createBraveSDK"
-        ],
+        "constructors": ["createBraveSDK"],
         "description": "Your Brave Search API key.  You can obtain this key from the Brave Search API developer portal.",
         "required": true
       }
@@ -418,15 +373,9 @@
     "title": "Microfox Calculator",
     "description": "Microfox calculator tool wrapping mathjs",
     "path": "packages/calculator",
-    "dependencies": [
-      "@microfox/core",
-      "mathjs",
-      "zod"
-    ],
+    "dependencies": ["@microfox/core", "mathjs", "zod"],
     "status": "partial",
-    "apiKeys": [
-      "MATHJS_API_KEY"
-    ],
+    "apiKeys": ["MATHJS_API_KEY"],
     "extraInfo": []
   },
   {
@@ -434,16 +383,9 @@
     "title": "Microfox Clearbit",
     "description": "Microfox SDK for Clearbit",
     "path": "packages/clearbit",
-    "dependencies": [
-      "@microfox/core",
-      "ky",
-      "p-throttle",
-      "zod"
-    ],
+    "dependencies": ["@microfox/core", "ky", "p-throttle", "zod"],
     "status": "partial",
-    "apiKeys": [
-      "CLEARBIT_API_KEY"
-    ],
+    "apiKeys": ["CLEARBIT_API_KEY"],
     "extraInfo": []
   },
   {
@@ -463,9 +405,7 @@
       "zod-validation-error"
     ],
     "status": "partial",
-    "apiKeys": [
-      "OPENAI_API_KEY"
-    ],
+    "apiKeys": ["OPENAI_API_KEY"],
     "extraInfo": []
   },
   {
@@ -473,13 +413,9 @@
     "title": "Microfox Dexa",
     "description": "Microfox SDK for Dexa's API (access to trusted podcast knowledge)",
     "path": "packages/dexa",
-    "dependencies": [
-      "@microfox/core"
-    ],
+    "dependencies": ["@microfox/core"],
     "status": "partial",
-    "apiKeys": [
-      "DEXA_API_KEY"
-    ],
+    "apiKeys": ["DEXA_API_KEY"],
     "extraInfo": []
   },
   {
@@ -487,14 +423,9 @@
     "title": "Microfox Dexter",
     "description": "Microfox adapter for the Dexter AI SDK by Dexa",
     "path": "packages/dexter",
-    "dependencies": [
-      "@microfox/core",
-      "@dexaai/dexter"
-    ],
+    "dependencies": ["@microfox/core", "@dexaai/dexter"],
     "status": "partial",
-    "apiKeys": [
-      "DEXTER_API_KEY"
-    ],
+    "apiKeys": ["DEXTER_API_KEY"],
     "extraInfo": []
   },
   {
@@ -502,16 +433,9 @@
     "title": "Microfox Diffbot",
     "description": "Microfox SDK for Diffbot",
     "path": "packages/diffbot",
-    "dependencies": [
-      "@microfox/core",
-      "ky",
-      "p-throttle",
-      "zod"
-    ],
+    "dependencies": ["@microfox/core", "ky", "p-throttle", "zod"],
     "status": "partial",
-    "apiKeys": [
-      "DIFFBOT_API_KEY"
-    ],
+    "apiKeys": ["DIFFBOT_API_KEY"],
     "extraInfo": []
   },
   {
@@ -519,10 +443,7 @@
     "title": "Microfox Discord SDK",
     "description": "A lightweight, type-safe SDK for interacting with the Discord API v10",
     "path": "packages/discord",
-    "dependencies": [
-      "@microfox/rest-sdk",
-      "zod"
-    ],
+    "dependencies": ["@microfox/rest-sdk", "zod"],
     "status": "stable",
     "authEndpoint": "/connect/discord",
     "documentation": "https://www.npmjs.com/package/@microfox/discord",
@@ -844,9 +765,7 @@
     "keysInfo": [
       {
         "key": "DISCORD_BOT_TOKEN",
-        "constructors": [
-          "createDiscordSdk"
-        ],
+        "constructors": ["createDiscordSdk"],
         "description": "The Discord bot token is required to authenticate with the Discord API. You can obtain this token by creating a bot application on the Discord Developer Portal.",
         "required": true
       }
@@ -863,13 +782,9 @@
     "title": "Microfox Drive SDK",
     "description": "Google Drive SDK for Microfox",
     "path": "packages/drive",
-    "dependencies": [
-      "@microfox/google",
-      "@microfox/rest-sdk",
-      "zod"
-    ],
+    "dependencies": ["@microfox/google", "@microfox/rest-sdk", "zod"],
     "status": "stable",
-    "authEndpoint": "/connect/google",
+    "authEndpoint": "/connect/google-oauth",
     "documentation": "https://www.npmjs.com/package/@microfox/drive",
     "icon": "https://raw.githubusercontent.com/microfox-ai/microfox/refs/heads/main/logos/google-drive.svg",
     "constructors": [
@@ -911,41 +826,31 @@
     "keysInfo": [
       {
         "key": "GOOGLE_ACCESS_TOKEN",
-        "constructors": [
-          "createDriveSDKWithTokens"
-        ],
+        "constructors": ["createDriveSDKWithTokens"],
         "description": "The access token for the Google Drive client",
         "required": true
       },
       {
         "key": "GOOGLE_REFRESH_TOKEN",
-        "constructors": [
-          "createDriveSDKWithTokens"
-        ],
+        "constructors": ["createDriveSDKWithTokens"],
         "description": "The refresh token for the Google Drive client",
         "required": true
       },
       {
         "key": "GOOGLE_CLIENT_ID",
-        "constructors": [
-          "createDriveSDKWithTokens"
-        ],
+        "constructors": ["createDriveSDKWithTokens"],
         "description": "The client ID for the Google Drive client",
         "required": true
       },
       {
         "key": "GOOGLE_CLIENT_SECRET",
-        "constructors": [
-          "createDriveSDKWithTokens"
-        ],
+        "constructors": ["createDriveSDKWithTokens"],
         "description": "The client secret for the Google Drive client",
         "required": true
       },
       {
         "key": "SCOPES",
-        "constructors": [
-          "createDriveSDKWithTokens"
-        ],
+        "constructors": ["createDriveSDKWithTokens"],
         "description": "The scopes for the Google Drive client",
         "required": true
       }
@@ -965,14 +870,9 @@
     "title": "Microfox E2B",
     "description": "Microfox SDK for E2B's hosted code interpreter",
     "path": "packages/e2b",
-    "dependencies": [
-      "@microfox/core",
-      "@e2b/code-interpreter"
-    ],
+    "dependencies": ["@microfox/core", "@e2b/code-interpreter"],
     "status": "partial",
-    "apiKeys": [
-      "E2B_API_KEY"
-    ],
+    "apiKeys": ["E2B_API_KEY"],
     "extraInfo": []
   },
   {
@@ -980,15 +880,9 @@
     "title": "Microfox Exa",
     "description": "Microfox SDK for the Exa search engine",
     "path": "packages/exa",
-    "dependencies": [
-      "@microfox/core",
-      "ky",
-      "zod"
-    ],
+    "dependencies": ["@microfox/core", "ky", "zod"],
     "status": "partial",
-    "apiKeys": [
-      "EXA_API_KEY"
-    ],
+    "apiKeys": ["EXA_API_KEY"],
     "extraInfo": []
   },
   {
@@ -996,13 +890,9 @@
     "title": "Microfox Firecrawl",
     "description": "Microfox SDK for Firecrawl web scraping and crawling",
     "path": "packages/firecrawl",
-    "dependencies": [
-      "@microfox/core"
-    ],
+    "dependencies": ["@microfox/core"],
     "status": "partial",
-    "apiKeys": [
-      "FIRECRAWL_API_KEY"
-    ],
+    "apiKeys": ["FIRECRAWL_API_KEY"],
     "extraInfo": []
   },
   {
@@ -1010,15 +900,9 @@
     "title": "Microfox Genkit",
     "description": "Microfox adapter for the Firebase Genkit AI SDK",
     "path": "packages/genkit",
-    "dependencies": [
-      "@microfox/core",
-      "zod",
-      "genkit"
-    ],
+    "dependencies": ["@microfox/core", "zod", "genkit"],
     "status": "partial",
-    "apiKeys": [
-      "GENKIT_API_KEY"
-    ],
+    "apiKeys": ["GENKIT_API_KEY"],
     "extraInfo": []
   },
   {
@@ -1026,13 +910,7 @@
     "title": "Microfox GitHub",
     "description": "Microfox SDK for GitHub",
     "path": "packages/github",
-    "dependencies": [
-      "@microfox/core",
-      "ky",
-      "octokit",
-      "p-throttle",
-      "zod"
-    ],
+    "dependencies": ["@microfox/core", "ky", "octokit", "p-throttle", "zod"],
     "status": "stable",
     "authEndpoint": "/connect/github",
     "documentation": "https://www.npmjs.com/package/@microfox/github",
@@ -1040,9 +918,7 @@
     "readme_map": {
       "path": "https://raw.githubusercontent.com/octokit/plugin-rest-endpoint-methods.js/refs/heads/main/docs/${scope}/${method}.md",
       "title": "GitHub SDK for Microfox",
-      "functionalities": [
-        "restApi"
-      ],
+      "functionalities": ["restApi"],
       "dynamic_setters": [
         {
           "key": "scope",
@@ -1069,18 +945,14 @@
             "description": "The token for the GitHub user's account. You can create one at https://github.com/settings/tokens"
           }
         ],
-        "functionalities": [
-          "restApi"
-        ],
+        "functionalities": ["restApi"],
         "internalKeys": []
       }
     ],
     "keysInfo": [
       {
         "key": "GITHUB_TOKEN",
-        "constructors": [
-          "Octokit"
-        ],
+        "constructors": ["Octokit"],
         "description": "The token for the GitHub user's account. You can create one at https://github.com/settings/tokens",
         "required": true
       }
@@ -1094,10 +966,7 @@
     "title": "Gmail SDK",
     "description": "TypeScript SDK for interacting with the Gmail API.",
     "path": "packages/gmail",
-    "dependencies": [
-      "zod",
-      "@microfox/google-oauth"
-    ],
+    "dependencies": ["zod", "@microfox/google-oauth"],
     "status": "stable",
     "authEndpoint": "/connect/google-oauth",
     "oauth2Scopes": [
@@ -1246,41 +1115,31 @@
     "keysInfo": [
       {
         "key": "GOOGLE_CLIENT_ID",
-        "constructors": [
-          "createGmailSDK"
-        ],
+        "constructors": ["createGmailSDK"],
         "description": "Your Google OAuth client ID",
         "required": true
       },
       {
         "key": "GOOGLE_CLIENT_SECRET",
-        "constructors": [
-          "createGmailSDK"
-        ],
+        "constructors": ["createGmailSDK"],
         "description": "Your Google OAuth client secret",
         "required": true
       },
       {
         "key": "GOOGLE_REDIRECT_URI",
-        "constructors": [
-          "createGmailSDK"
-        ],
+        "constructors": ["createGmailSDK"],
         "description": "The redirect URI for your application",
         "required": true
       },
       {
         "key": "GOOGLE_ACCESS_TOKEN",
-        "constructors": [
-          "createGmailSDK"
-        ],
+        "constructors": ["createGmailSDK"],
         "description": "The access token for the Google OAuth application",
         "required": false
       },
       {
         "key": "GOOGLE_REFRESH_TOKEN",
-        "constructors": [
-          "createGmailSDK"
-        ],
+        "constructors": ["createGmailSDK"],
         "description": "The refresh token for the Google OAuth application",
         "required": false
       }
@@ -1322,12 +1181,9 @@
     "title": "Microfox Google SDK",
     "description": "Google SDK for Microfox",
     "path": "packages/google",
-    "dependencies": [
-      "@microfox/rest",
-      "zod"
-    ],
+    "dependencies": ["@microfox/rest", "zod"],
     "status": "oauthConnector",
-    "authEndpoint": "/connect/google",
+    "authEndpoint": "/connect/google-oauth",
     "documentation": "https://www.npmjs.com/package/@microfox/google",
     "icon": "https://raw.githubusercontent.com/microfox-ai/microfox/refs/heads/main/logos/google.svg",
     "constructors": [
@@ -1369,41 +1225,31 @@
     "keysInfo": [
       {
         "key": "GOOGLE_ACCESS_TOKEN",
-        "constructors": [
-          "googleOAuthManager"
-        ],
+        "constructors": ["googleOAuthManager"],
         "description": "The access token for the Google client",
         "required": true
       },
       {
         "key": "GOOGLE_REFRESH_TOKEN",
-        "constructors": [
-          "googleOAuthManager"
-        ],
+        "constructors": ["googleOAuthManager"],
         "description": "The refresh token for the Google client",
         "required": true
       },
       {
         "key": "GOOGLE_CLIENT_ID",
-        "constructors": [
-          "googleOAuthManager"
-        ],
+        "constructors": ["googleOAuthManager"],
         "description": "The client ID for the Google client",
         "required": true
       },
       {
         "key": "GOOGLE_CLIENT_SECRET",
-        "constructors": [
-          "googleOAuthManager"
-        ],
+        "constructors": ["googleOAuthManager"],
         "description": "The client secret for the Google client",
         "required": true
       },
       {
         "key": "SCOPES",
-        "constructors": [
-          "googleOAuthManager"
-        ],
+        "constructors": ["googleOAuthManager"],
         "description": "The scopes for the Google client",
         "required": true
       }
@@ -1423,10 +1269,7 @@
     "title": "Google Analytics SDK",
     "description": "A TypeScript SDK for interacting with the Google Analytics API.",
     "path": "packages/google-analytics",
-    "dependencies": [
-      "@microfox/google-oauth",
-      "zod"
-    ],
+    "dependencies": ["@microfox/google-oauth", "zod"],
     "status": "stable",
     "authEndpoint": "/connect/google-oauth",
     "oauth2Scopes": [
@@ -1686,33 +1529,25 @@
     "keysInfo": [
       {
         "key": "GOOGLE_ANALYTICS_CLIENT_ID",
-        "constructors": [
-          "GoogleAnalyticsSDK"
-        ],
+        "constructors": ["GoogleAnalyticsSDK"],
         "description": "The client ID for your Google Cloud project.",
         "required": true
       },
       {
         "key": "GOOGLE_ANALYTICS_CLIENT_SECRET",
-        "constructors": [
-          "GoogleAnalyticsSDK"
-        ],
+        "constructors": ["GoogleAnalyticsSDK"],
         "description": "The client secret for your Google Cloud project.",
         "required": true
       },
       {
         "key": "GOOGLE_ANALYTICS_REDIRECT_URI",
-        "constructors": [
-          "GoogleAnalyticsSDK"
-        ],
+        "constructors": ["GoogleAnalyticsSDK"],
         "description": "The redirect URI for your OAuth 2.0 credentials.",
         "required": true
       },
       {
         "key": "GOOGLE_ANALYTICS_ACCESS_TOKEN",
-        "constructors": [
-          "GoogleAnalyticsSDK"
-        ],
+        "constructors": ["GoogleAnalyticsSDK"],
         "description": "The access token for authenticating with the Google Analytics Data API.",
         "required": true
       }
@@ -1743,9 +1578,7 @@
     "title": "Microfox Google OAuth SDK",
     "description": "Google OAuth SDK for Microfox",
     "path": "packages/google-oauth",
-    "dependencies": [
-      "zod"
-    ],
+    "dependencies": ["zod"],
     "status": "oauthConnector",
     "authEndpoint": "/connect/google-oauth",
     "documentation": "https://www.npmjs.com/package/@microfox/google-oauth",
@@ -1789,41 +1622,31 @@
     "keysInfo": [
       {
         "key": "GOOGLE_ACCESS_TOKEN",
-        "constructors": [
-          "GoogleOAuthSdk"
-        ],
+        "constructors": ["GoogleOAuthSdk"],
         "description": "The access token for the Google client",
         "required": true
       },
       {
         "key": "GOOGLE_REFRESH_TOKEN",
-        "constructors": [
-          "GoogleOAuthSdk"
-        ],
+        "constructors": ["GoogleOAuthSdk"],
         "description": "The refresh token for the Google client",
         "required": true
       },
       {
         "key": "GOOGLE_CLIENT_ID",
-        "constructors": [
-          "GoogleOAuthSdk"
-        ],
+        "constructors": ["GoogleOAuthSdk"],
         "description": "The client ID for the Google application",
         "required": true
       },
       {
         "key": "GOOGLE_CLIENT_SECRET",
-        "constructors": [
-          "GoogleOAuthSdk"
-        ],
+        "constructors": ["GoogleOAuthSdk"],
         "description": "The client secret for the Google application",
         "required": true
       },
       {
         "key": "GOOGLE_SCOPES",
-        "constructors": [
-          "GoogleOAuthSdk"
-        ],
+        "constructors": ["GoogleOAuthSdk"],
         "description": "The scopes for the Google client",
         "required": true
       }
@@ -1843,10 +1666,7 @@
     "title": "Google Search Console",
     "description": "A TypeScript SDK for interacting with the Google Search Console API.",
     "path": "packages/google-seo",
-    "dependencies": [
-      "@microfox/google-oauth",
-      "zod"
-    ],
+    "dependencies": ["@microfox/google-oauth", "zod"],
     "status": "stable",
     "authEndpoint": "/connect/google-oauth",
     "oauth2Scopes": [
@@ -2016,33 +1836,25 @@
     "keysInfo": [
       {
         "key": "GOOGLE_CLIENT_ID",
-        "constructors": [
-          "GoogleSearchConsoleSDK"
-        ],
+        "constructors": ["GoogleSearchConsoleSDK"],
         "description": "Your Google OAuth 2.0 client ID. Obtain this value from the Google Cloud Console.",
         "required": true
       },
       {
         "key": "GOOGLE_CLIENT_SECRET",
-        "constructors": [
-          "GoogleSearchConsoleSDK"
-        ],
+        "constructors": ["GoogleSearchConsoleSDK"],
         "description": "Your Google OAuth 2.0 client secret. Obtain this value from the Google Cloud Console.",
         "required": true
       },
       {
         "key": "GOOGLE_REDIRECT_URI",
-        "constructors": [
-          "GoogleSearchConsoleSDK"
-        ],
+        "constructors": ["GoogleSearchConsoleSDK"],
         "description": "The redirect URI you specified in your Google Cloud Console.",
         "required": true
       },
       {
         "key": "GOOGLE_ACCESS_TOKEN",
-        "constructors": [
-          "GoogleSearchConsoleSDK"
-        ],
+        "constructors": ["GoogleSearchConsoleSDK"],
         "description": "Your Google OAuth 2.0 access token. Obtain this value through the OAuth 2.0 flow.",
         "required": true
       }
@@ -2066,15 +1878,10 @@
     "title": "Google Sheets SDK",
     "description": "A TypeScript SDK for interacting with Google Sheets.",
     "path": "packages/google-sheets",
-    "dependencies": [
-      "@microfox/google-oauth",
-      "zod"
-    ],
+    "dependencies": ["@microfox/google-oauth", "zod"],
     "status": "stable",
     "authEndpoint": "/connect/google-oauth",
-    "oauth2Scopes": [
-      "https://www.googleapis.com/auth/spreadsheets"
-    ],
+    "oauth2Scopes": ["https://www.googleapis.com/auth/spreadsheets"],
     "documentation": "https://www.npmjs.com/package/@microfox/google-sheets",
     "icon": "https://raw.githubusercontent.com/microfox-ai/microfox/refs/heads/main/logos/google-sheets-icon.svg",
     "readme_map": {
@@ -2199,9 +2006,7 @@
             "key": "SCOPES",
             "displayName": "Scopes",
             "description": "The scopes for Google OAuth authentication. This is used to specify the permissions that the client application needs.",
-            "defaultValue": [
-              "https://www.googleapis.com/auth/spreadsheets"
-            ]
+            "defaultValue": ["https://www.googleapis.com/auth/spreadsheets"]
           }
         ],
         "functionalities": [
@@ -2220,33 +2025,25 @@
     "keysInfo": [
       {
         "key": "GOOGLE_CLIENT_ID",
-        "constructors": [
-          "createGoogleSheetsSdk"
-        ],
+        "constructors": ["createGoogleSheetsSdk"],
         "description": "The client ID for Google OAuth.  You can obtain this from the Google Cloud Console.",
         "required": true
       },
       {
         "key": "GOOGLE_CLIENT_SECRET",
-        "constructors": [
-          "createGoogleSheetsSdk"
-        ],
+        "constructors": ["createGoogleSheetsSdk"],
         "description": "The client secret for Google OAuth. You can obtain this from the Google Cloud Console.",
         "required": true
       },
       {
         "key": "GOOGLE_ACCESS_TOKEN",
-        "constructors": [
-          "createGoogleSheetsSdk"
-        ],
+        "constructors": ["createGoogleSheetsSdk"],
         "description": "The access token for Google OAuth. This token is used to authenticate requests to the Google Sheets API.",
         "required": true
       },
       {
         "key": "GOOGLE_REFRESH_TOKEN",
-        "constructors": [
-          "createGoogleSheetsSdk"
-        ],
+        "constructors": ["createGoogleSheetsSdk"],
         "description": "The refresh token for Google OAuth. This token is used to refresh the access token when it expires.",
         "required": true
       }
@@ -2260,13 +2057,9 @@
     "title": "Microfox Gravatar",
     "description": "Microfox SDK for Gravatar profile and avatar services",
     "path": "packages/gravatar",
-    "dependencies": [
-      "@microfox/core"
-    ],
+    "dependencies": ["@microfox/core"],
     "status": "partial",
-    "apiKeys": [
-      "GRAVATAR_API_KEY"
-    ],
+    "apiKeys": ["GRAVATAR_API_KEY"],
     "extraInfo": []
   },
   {
@@ -2274,15 +2067,9 @@
     "title": "Microfox Hacker News",
     "description": "Microfox SDK for Hacker News",
     "path": "packages/hacker-news",
-    "dependencies": [
-      "@microfox/core",
-      "ky",
-      "zod"
-    ],
+    "dependencies": ["@microfox/core", "ky", "zod"],
     "status": "partial",
-    "apiKeys": [
-      "HACKER_NEWS_API_KEY"
-    ],
+    "apiKeys": ["HACKER_NEWS_API_KEY"],
     "extraInfo": []
   },
   {
@@ -2290,13 +2077,9 @@
     "title": "Microfox Hunter",
     "description": "Microfox SDK for Hunter.io email finder and verification",
     "path": "packages/hunter",
-    "dependencies": [
-      "@microfox/core"
-    ],
+    "dependencies": ["@microfox/core"],
     "status": "partial",
-    "apiKeys": [
-      "HUNTER_API_KEY"
-    ],
+    "apiKeys": ["HUNTER_API_KEY"],
     "extraInfo": []
   },
   {
@@ -2304,10 +2087,7 @@
     "title": "Microfox Instagram SDK",
     "description": "A TypeScript SDK for interacting with the Instagram Graph API using OAuth 2.0.",
     "path": "packages/instagram",
-    "dependencies": [
-      "@microfox/instagram-business-oauth",
-      "zod"
-    ],
+    "dependencies": ["@microfox/instagram-business-oauth", "zod"],
     "status": "stable",
     "authEndpoint": "/connect/instagram-business-oauth",
     "oauth2Scopes": [
@@ -2502,41 +2282,31 @@
     "keysInfo": [
       {
         "key": "INSTAGRAM_CLIENT_ID",
-        "constructors": [
-          "InstagramSDK"
-        ],
+        "constructors": ["InstagramSDK"],
         "description": "Your Instagram app's Client ID. Obtain this from your app's settings on the Facebook Developer platform.",
         "required": true
       },
       {
         "key": "INSTAGRAM_CLIENT_SECRET",
-        "constructors": [
-          "InstagramSDK"
-        ],
+        "constructors": ["InstagramSDK"],
         "description": "Your Instagram app's Client Secret. Obtain this from your app's settings on the Facebook Developer platform. Keep this value secure.",
         "required": true
       },
       {
         "key": "INSTAGRAM_REDIRECT_URI",
-        "constructors": [
-          "InstagramSDK"
-        ],
+        "constructors": ["InstagramSDK"],
         "description": "The OAuth redirect URI configured for your app on the Facebook Developer platform. This URI must match the one used during the OAuth flow.",
         "required": true
       },
       {
         "key": "INSTAGRAM_ACCESS_TOKEN",
-        "constructors": [
-          "InstagramSDK"
-        ],
+        "constructors": ["InstagramSDK"],
         "description": "The user's access token obtained through the OAuth flow. This token is used to authenticate API requests.",
         "required": true
       },
       {
         "key": "INSTAGRAM_REFRESH_TOKEN",
-        "constructors": [
-          "InstagramSDK"
-        ],
+        "constructors": ["InstagramSDK"],
         "description": "The user's refresh token obtained through the OAuth flow. This token is used to refresh the access token when it expires.",
         "required": true
       }
@@ -2580,9 +2350,7 @@
     "title": "Microfox Instagram Business OAuth",
     "description": "A lightweight, type-safe SDK for interacting with the Instagram Business API",
     "path": "packages/instagram-business-oauth",
-    "dependencies": [
-      "zod"
-    ],
+    "dependencies": ["zod"],
     "status": "stable",
     "authEndpoint": "/connect/instagram",
     "documentation": "https://www.npmjs.com/package/@microfox/instagram-business-oauth",
@@ -2636,49 +2404,37 @@
     "keysInfo": [
       {
         "key": "INSTAGRAM_CLIENT_ID",
-        "constructors": [
-          "InstagramBusinessOAuthSdk"
-        ],
+        "constructors": ["InstagramBusinessOAuthSdk"],
         "description": "The client ID for Instagram Business OAuth",
         "required": true
       },
       {
         "key": "INSTAGRAM_CLIENT_SECRET",
-        "constructors": [
-          "InstagramBusinessOAuthSdk"
-        ],
+        "constructors": ["InstagramBusinessOAuthSdk"],
         "description": "The client secret for Instagram Business OAuth",
         "required": true
       },
       {
         "key": "INSTAGRAM_REDIRECT_URI",
-        "constructors": [
-          "InstagramBusinessOAuthSdk"
-        ],
+        "constructors": ["InstagramBusinessOAuthSdk"],
         "description": "The redirect URI for Instagram Business OAuth",
         "required": true
       },
       {
         "key": "INSTAGRAM_SCOPES",
-        "constructors": [
-          "InstagramBusinessOAuthSdk"
-        ],
+        "constructors": ["InstagramBusinessOAuthSdk"],
         "description": "The scopes for Instagram Business OAuth",
         "required": true
       },
       {
         "key": "INSTAGRAM_ACCESS_TOKEN",
-        "constructors": [
-          "InstagramBusinessOAuthSdk"
-        ],
+        "constructors": ["InstagramBusinessOAuthSdk"],
         "description": "The access token for Instagram Business OAuth",
         "required": true
       },
       {
         "key": "INSTAGRAM_REFRESH_TOKEN",
-        "constructors": [
-          "InstagramBusinessOAuthSdk"
-        ],
+        "constructors": ["InstagramBusinessOAuthSdk"],
         "description": "The refresh token for Instagram Business OAuth",
         "required": true
       }
@@ -2693,10 +2449,7 @@
     "title": "Instagram SDK",
     "description": "A TypeScript SDK for interacting with the Instagram API using OAuth 2.0.  This package simplifies authentication and data access.",
     "path": "packages/instagram-fb",
-    "dependencies": [
-      "@microfox/instagram-fb-business-oauth",
-      "zod"
-    ],
+    "dependencies": ["@microfox/instagram-fb-business-oauth", "zod"],
     "status": "stable",
     "authEndpoint": "/connect/instagram-fb-business-oauth",
     "oauth2Scopes": [
@@ -2896,33 +2649,25 @@
     "keysInfo": [
       {
         "key": "INSTAGRAM_CLIENT_ID",
-        "constructors": [
-          "InstagramSDK"
-        ],
+        "constructors": ["InstagramSDK"],
         "description": "Your Facebook App ID. Obtain this from your Facebook Developer account.",
         "required": true
       },
       {
         "key": "INSTAGRAM_CLIENT_SECRET",
-        "constructors": [
-          "InstagramSDK"
-        ],
+        "constructors": ["InstagramSDK"],
         "description": "Your Facebook App Secret. Obtain this from your Facebook Developer account.",
         "required": true
       },
       {
         "key": "INSTAGRAM_REDIRECT_URI",
-        "constructors": [
-          "InstagramSDK"
-        ],
+        "constructors": ["InstagramSDK"],
         "description": "Your OAuth callback URL. This is the URL where Facebook will redirect the user after authorization.",
         "required": true
       },
       {
         "key": "INSTAGRAM_ACCESS_TOKEN",
-        "constructors": [
-          "InstagramSDK"
-        ],
+        "constructors": ["InstagramSDK"],
         "description": "A valid access token for the Instagram Graph API. Obtain this through the OAuth flow.",
         "required": true
       }
@@ -2949,9 +2694,7 @@
     "title": "Microfox Instagram FB Business OAuth",
     "description": "A lightweight, type-safe SDK for interacting with the Instagram Business API through Facebook OAuth",
     "path": "packages/instagram-fb-business-oauth",
-    "dependencies": [
-      "zod"
-    ],
+    "dependencies": ["zod"],
     "status": "stable",
     "authEndpoint": "/connect/instagram-fb",
     "documentation": "https://www.npmjs.com/package/@microfox/instagram-fb-business-oauth",
@@ -3005,49 +2748,37 @@
     "keysInfo": [
       {
         "key": "INSTAGRAM_FB_CLIENT_ID",
-        "constructors": [
-          "InstagramFbBusinessOAuthSdk"
-        ],
+        "constructors": ["InstagramFbBusinessOAuthSdk"],
         "description": "The client ID for Instagram FB Business OAuth",
         "required": true
       },
       {
         "key": "INSTAGRAM_FB_CLIENT_SECRET",
-        "constructors": [
-          "InstagramFbBusinessOAuthSdk"
-        ],
+        "constructors": ["InstagramFbBusinessOAuthSdk"],
         "description": "The client secret for Instagram FB Business OAuth",
         "required": true
       },
       {
         "key": "INSTAGRAM_FB_REDIRECT_URI",
-        "constructors": [
-          "InstagramFbBusinessOAuthSdk"
-        ],
+        "constructors": ["InstagramFbBusinessOAuthSdk"],
         "description": "The redirect URI for Instagram FB Business OAuth",
         "required": true
       },
       {
         "key": "INSTAGRAM_FB_SCOPES",
-        "constructors": [
-          "InstagramFbBusinessOAuthSdk"
-        ],
+        "constructors": ["InstagramFbBusinessOAuthSdk"],
         "description": "The scopes for Instagram FB Business OAuth",
         "required": true
       },
       {
         "key": "INSTAGRAM_FB_ACCESS_TOKEN",
-        "constructors": [
-          "InstagramFbBusinessOAuthSdk"
-        ],
+        "constructors": ["InstagramFbBusinessOAuthSdk"],
         "description": "The access token for Instagram FB Business OAuth",
         "required": true
       },
       {
         "key": "INSTAGRAM_FB_REFRESH_TOKEN",
-        "constructors": [
-          "InstagramFbBusinessOAuthSdk"
-        ],
+        "constructors": ["InstagramFbBusinessOAuthSdk"],
         "description": "The refresh token for Instagram FB Business OAuth",
         "required": true
       }
@@ -3062,13 +2793,9 @@
     "title": "Microfox Jigsawstack",
     "description": "Microfox adapter for the Jigsawstack AI SDK",
     "path": "packages/jigsawstack",
-    "dependencies": [
-      "@microfox/core"
-    ],
+    "dependencies": ["@microfox/core"],
     "status": "partial",
-    "apiKeys": [
-      "JIGSAWSTACK_API_KEY"
-    ],
+    "apiKeys": ["JIGSAWSTACK_API_KEY"],
     "extraInfo": []
   },
   {
@@ -3076,16 +2803,9 @@
     "title": "Microfox Jina",
     "description": "Microfox SDK for Jina AI",
     "path": "packages/jina",
-    "dependencies": [
-      "@microfox/core",
-      "ky",
-      "p-throttle",
-      "zod"
-    ],
+    "dependencies": ["@microfox/core", "ky", "p-throttle", "zod"],
     "status": "partial",
-    "apiKeys": [
-      "JINA_API_KEY"
-    ],
+    "apiKeys": ["JINA_API_KEY"],
     "extraInfo": []
   },
   {
@@ -3093,10 +2813,7 @@
     "title": "Microfox LangChain",
     "description": "Microfox adapter for the LangChain AI SDK",
     "path": "packages/langchain",
-    "dependencies": [
-      "@microfox/core",
-      "@langchain/core"
-    ],
+    "dependencies": ["@microfox/core", "@langchain/core"],
     "status": "partial",
     "apiKeys": [],
     "extraInfo": []
@@ -3106,13 +2823,9 @@
     "title": "Microfox LeadMagic",
     "description": "Microfox SDK for LeadMagic lead generation and enrichment",
     "path": "packages/leadmagic",
-    "dependencies": [
-      "@microfox/core"
-    ],
+    "dependencies": ["@microfox/core"],
     "status": "partial",
-    "apiKeys": [
-      "LEADMAGIC_API_KEY"
-    ],
+    "apiKeys": ["LEADMAGIC_API_KEY"],
     "extraInfo": []
   },
   {
@@ -3120,15 +2833,10 @@
     "title": "LinkedIn Member Data Portability SDK",
     "description": "A TypeScript SDK for LinkedIn Member Data Portability.",
     "path": "packages/linkedin-member-data-portability",
-    "dependencies": [
-      "@microfox/linkedin-oauth",
-      "zod"
-    ],
+    "dependencies": ["@microfox/linkedin-oauth", "zod"],
     "status": "stable",
     "authEndpoint": "/connect/linkedin-oauth",
-    "oauth2Scopes": [
-      "r_dma_portability_3rd_party"
-    ],
+    "oauth2Scopes": ["r_dma_portability_3rd_party"],
     "documentation": "https://www.npmjs.com/package/@microfox/linkedin-member-data-portability",
     "icon": "https://raw.githubusercontent.com/microfox-ai/microfox/refs/heads/main/logos/linkedin-icon.svg",
     "readme_map": {
@@ -3249,49 +2957,37 @@
     "keysInfo": [
       {
         "key": "LINKEDIN_CLIENT_ID",
-        "constructors": [
-          "LinkedInDataPortabilitySDK"
-        ],
+        "constructors": ["LinkedInDataPortabilitySDK"],
         "description": "Your LinkedIn app's Client ID.",
         "required": true
       },
       {
         "key": "LINKEDIN_CLIENT_SECRET",
-        "constructors": [
-          "LinkedInDataPortabilitySDK"
-        ],
+        "constructors": ["LinkedInDataPortabilitySDK"],
         "description": "Your LinkedIn app's Client Secret.",
         "required": true
       },
       {
         "key": "LINKEDIN_REDIRECT_URI",
-        "constructors": [
-          "LinkedInDataPortabilitySDK"
-        ],
+        "constructors": ["LinkedInDataPortabilitySDK"],
         "description": "The redirect URI registered in your LinkedIn app.",
         "required": true
       },
       {
         "key": "LINKEDIN_ACCESS_TOKEN",
-        "constructors": [
-          "LinkedInDataPortabilitySDK"
-        ],
+        "constructors": ["LinkedInDataPortabilitySDK"],
         "description": "The OAuth 2.0 access token for authenticated requests.",
         "required": true
       },
       {
         "key": "LINKEDIN_REFRESH_TOKEN",
-        "constructors": [
-          "LinkedInDataPortabilitySDK"
-        ],
+        "constructors": ["LinkedInDataPortabilitySDK"],
         "description": "The refresh token to obtain new access tokens.",
         "required": false
       },
       {
         "key": "SCOPES",
-        "constructors": [
-          "LinkedInDataPortabilitySDK"
-        ],
+        "constructors": ["LinkedInDataPortabilitySDK"],
         "description": "The scopes for OAuth requests",
         "required": true
       }
@@ -3350,10 +3046,7 @@
     "title": "LinkedIn OAuth",
     "description": "Oauth2 for LinkedIn - Connect to LinkedIn and get access to the LinkedIn API products.",
     "path": "packages/linkedin-oauth",
-    "dependencies": [
-      "@microfox/rest-sdk",
-      "zod"
-    ],
+    "dependencies": ["@microfox/rest-sdk", "zod"],
     "status": "oauthConnector",
     "authEndpoint": "/connect/linkedin-oauth",
     "documentation": "https://www.npmjs.com/package/@microfox/linkedin-oauth",
@@ -3397,41 +3090,31 @@
     "keysInfo": [
       {
         "key": "LINKEDIN_ACCESS_TOKEN",
-        "constructors": [
-          "linkedinOAuthManager"
-        ],
+        "constructors": ["linkedinOAuthManager"],
         "description": "The access token for the LinkedIn client",
         "required": true
       },
       {
         "key": "LINKEDIN_REFRESH_TOKEN",
-        "constructors": [
-          "linkedinOAuthManager"
-        ],
+        "constructors": ["linkedinOAuthManager"],
         "description": "The refresh token for the LinkedIn client",
         "required": true
       },
       {
         "key": "LINKEDIN_CLIENT_ID",
-        "constructors": [
-          "linkedinOAuthManager"
-        ],
+        "constructors": ["linkedinOAuthManager"],
         "description": "The client ID for the LinkedIn application",
         "required": true
       },
       {
         "key": "LINKEDIN_CLIENT_SECRET",
-        "constructors": [
-          "linkedinOAuthManager"
-        ],
+        "constructors": ["linkedinOAuthManager"],
         "description": "The client secret for the LinkedIn application",
         "required": true
       },
       {
         "key": "LINKEDIN_SCOPES",
-        "constructors": [
-          "linkedinOAuthManager"
-        ],
+        "constructors": ["linkedinOAuthManager"],
         "description": "The scopes for the LinkedIn client",
         "required": true
       }
@@ -3451,9 +3134,7 @@
     "title": "LinkedIn Share",
     "description": "LinkedIn Share - Simple Text Post, Share an Article, Share an Image, Create a draft post. etc..",
     "path": "packages/linkedin-share",
-    "dependencies": [
-      "zod"
-    ],
+    "dependencies": ["zod"],
     "status": "stable",
     "authEndpoint": "/connect/linkedin",
     "documentation": "https://www.npmjs.com/package/@microfox/linkedin-share",
@@ -3472,18 +3153,13 @@
             "description": "The LinkedIn access token required for authentication."
           }
         ],
-        "functionalities": [
-          "post",
-          "getUserId"
-        ]
+        "functionalities": ["post", "getUserId"]
       }
     ],
     "keysInfo": [
       {
         "key": "LINKEDIN_ACCESS_TOKEN",
-        "constructors": [
-          "LinkedinShareSdk"
-        ],
+        "constructors": ["LinkedinShareSdk"],
         "description": "The LinkedIn access token required for authentication.",
         "required": true
       }
@@ -3495,11 +3171,7 @@
       "title": "LinkedIn Share",
       "description": "The full README for the LinkedIn Share",
       "path": "https://github.com/microfox-ai/microfox/blob/main/packages/linkedin-share/README.md",
-      "functionalities": [
-        "LinkedinShareSdk",
-        "post",
-        "getUserId"
-      ],
+      "functionalities": ["LinkedinShareSdk", "post", "getUserId"],
       "all_readmes": [
         {
           "path": "https://github.com/microfox-ai/microfox/blob/main/packages/linkedin-share/docs/LinkedinShareSdk.md",
@@ -3530,10 +3202,7 @@
     "title": "Microfox LlamaIndex",
     "description": "Microfox adapter for the LlamaIndex AI SDK",
     "path": "packages/llamaindex",
-    "dependencies": [
-      "@microfox/core",
-      "llamaindex"
-    ],
+    "dependencies": ["@microfox/core", "llamaindex"],
     "status": "partial",
     "apiKeys": [],
     "extraInfo": []
@@ -3543,13 +3212,9 @@
     "title": "Microfox Mastra",
     "description": "Microfox adapter for the Mastra AI Agent SDK",
     "path": "packages/mastra",
-    "dependencies": [
-      "@microfox/core"
-    ],
+    "dependencies": ["@microfox/core"],
     "status": "partial",
-    "apiKeys": [
-      "MASTRA_API_KEY"
-    ],
+    "apiKeys": ["MASTRA_API_KEY"],
     "extraInfo": []
   },
   {
@@ -3557,13 +3222,9 @@
     "title": "Microfox Midjourney",
     "description": "Microfox SDK for the unofficial Midjourney API via imagineapi.dev",
     "path": "packages/midjourney",
-    "dependencies": [
-      "@microfox/core"
-    ],
+    "dependencies": ["@microfox/core"],
     "status": "partial",
-    "apiKeys": [
-      "MIDJOURNEY_API_KEY"
-    ],
+    "apiKeys": ["MIDJOURNEY_API_KEY"],
     "extraInfo": []
   },
   {
@@ -3571,13 +3232,9 @@
     "title": "Microfox Novu",
     "description": "Microfox SDK for the Novu notifications API",
     "path": "packages/novu",
-    "dependencies": [
-      "@microfox/core"
-    ],
+    "dependencies": ["@microfox/core"],
     "status": "partial",
-    "apiKeys": [
-      "NOVU_API_KEY"
-    ],
+    "apiKeys": ["NOVU_API_KEY"],
     "extraInfo": []
   },
   {
@@ -3585,16 +3242,9 @@
     "title": "Microfox People Data Labs",
     "description": "Microfox SDK for People Data Labs",
     "path": "packages/people-data-labs",
-    "dependencies": [
-      "@microfox/core",
-      "ky",
-      "p-throttle",
-      "zod"
-    ],
+    "dependencies": ["@microfox/core", "ky", "p-throttle", "zod"],
     "status": "partial",
-    "apiKeys": [
-      "PEOPLE_DATA_LABS_API_KEY"
-    ],
+    "apiKeys": ["PEOPLE_DATA_LABS_API_KEY"],
     "extraInfo": []
   },
   {
@@ -3602,16 +3252,9 @@
     "title": "Microfox Perigon",
     "description": "Microfox SDK for the Perigon News API",
     "path": "packages/perigon",
-    "dependencies": [
-      "@microfox/core",
-      "ky",
-      "p-throttle",
-      "zod"
-    ],
+    "dependencies": ["@microfox/core", "ky", "p-throttle", "zod"],
     "status": "partial",
-    "apiKeys": [
-      "PERIGON_API_KEY"
-    ],
+    "apiKeys": ["PERIGON_API_KEY"],
     "extraInfo": []
   },
   {
@@ -3619,15 +3262,9 @@
     "title": "Microfox Polygon",
     "description": "Microfox SDK for the Polygon stock API",
     "path": "packages/polygon",
-    "dependencies": [
-      "@microfox/core",
-      "ky",
-      "zod"
-    ],
+    "dependencies": ["@microfox/core", "ky", "zod"],
     "status": "partial",
-    "apiKeys": [
-      "POLYGON_API_KEY"
-    ],
+    "apiKeys": ["POLYGON_API_KEY"],
     "extraInfo": []
   },
   {
@@ -3635,13 +3272,9 @@
     "title": "Microfox Predict Leads",
     "description": "Microfox SDK for Predict Leads company intelligence and signals",
     "path": "packages/predict-leads",
-    "dependencies": [
-      "@microfox/core"
-    ],
+    "dependencies": ["@microfox/core"],
     "status": "partial",
-    "apiKeys": [
-      "PREDICT_LEADS_API_KEY"
-    ],
+    "apiKeys": ["PREDICT_LEADS_API_KEY"],
     "extraInfo": []
   },
   {
@@ -3649,13 +3282,9 @@
     "title": "Proxycurl Scraping API",
     "description": "Proxycurl API client",
     "path": "packages/proxycurl",
-    "dependencies": [
-      "@microfox/core"
-    ],
+    "dependencies": ["@microfox/core"],
     "status": "partial",
-    "apiKeys": [
-      "PROXYCURL_API_KEY"
-    ],
+    "apiKeys": ["PROXYCURL_API_KEY"],
     "extraInfo": []
   },
   {
@@ -3663,10 +3292,7 @@
     "title": "Reddit TypeScript SDK",
     "description": "A TypeScript SDK for interacting with the Reddit API, providing functionalities for user data retrieval, search operations (users, posts, communities), post and comment processing, moderation, and comprehensive data access.",
     "path": "packages/reddit",
-    "dependencies": [
-      "zod",
-      "@microfox/reddit-oauth"
-    ],
+    "dependencies": ["zod", "@microfox/reddit-oauth"],
     "status": "stable",
     "authEndpoint": "/connect/reddit-oauth",
     "oauth2Scopes": [
@@ -3949,41 +3575,31 @@
     "keysInfo": [
       {
         "key": "REDDIT_CLIENT_ID",
-        "constructors": [
-          "createRedditSDK"
-        ],
+        "constructors": ["createRedditSDK"],
         "description": "Your Reddit application's client ID.  Obtain this by creating a Reddit app at https://www.reddit.com/prefs/apps.",
         "required": true
       },
       {
         "key": "REDDIT_CLIENT_SECRET",
-        "constructors": [
-          "createRedditSDK"
-        ],
+        "constructors": ["createRedditSDK"],
         "description": "Your Reddit application's client secret. Obtain this by creating a Reddit app at https://www.reddit.com/prefs/apps.",
         "required": true
       },
       {
         "key": "REDDIT_ACCESS_TOKEN",
-        "constructors": [
-          "createRedditSDK"
-        ],
+        "constructors": ["createRedditSDK"],
         "description": "The OAuth access token for authenticating with the Reddit API. This token expires after 1 hour.",
         "required": true
       },
       {
         "key": "REDDIT_REFRESH_TOKEN",
-        "constructors": [
-          "createRedditSDK"
-        ],
+        "constructors": ["createRedditSDK"],
         "description": "The OAuth refresh token for obtaining new access tokens. Include `duration=permanent` in the initial authorization request to receive a refresh token.",
         "required": false
       },
       {
         "key": "REDDIT_REDIRECT_URI",
-        "constructors": [
-          "createRedditSDK"
-        ],
+        "constructors": ["createRedditSDK"],
         "description": "The redirect URI you specified when creating your Reddit app. This URI must match exactly.",
         "required": true
       }
@@ -4031,9 +3647,7 @@
     "title": "Microfox Reddit OAuth",
     "description": "A TypeScript OAuth package for Reddit.",
     "path": "packages/reddit-oauth",
-    "dependencies": [
-      "zod"
-    ],
+    "dependencies": ["zod"],
     "status": "stable",
     "authEndpoint": "/connect/reddit",
     "oauth2Scopes": [
@@ -4146,25 +3760,19 @@
     "keysInfo": [
       {
         "key": "REDDIT_CLIENT_ID",
-        "constructors": [
-          "createRedditOAuth"
-        ],
+        "constructors": ["createRedditOAuth"],
         "description": "Your Reddit application's client ID. Obtain this from your Reddit app settings.",
         "required": true
       },
       {
         "key": "REDDIT_CLIENT_SECRET",
-        "constructors": [
-          "createRedditOAuth"
-        ],
+        "constructors": ["createRedditOAuth"],
         "description": "Your Reddit application's client secret. Obtain this from your Reddit app settings.",
         "required": true
       },
       {
         "key": "REDDIT_REDIRECT_URI",
-        "constructors": [
-          "createRedditOAuth"
-        ],
+        "constructors": ["createRedditOAuth"],
         "description": "The redirect URI you specified when creating your Reddit app.",
         "required": true
       }
@@ -4214,9 +3822,7 @@
     "title": "Microfox REST SDK",
     "description": "REST SDK for Microfox",
     "path": "packages/rest-sdk",
-    "dependencies": [
-      "zod"
-    ],
+    "dependencies": ["zod"],
     "status": "internal",
     "documentation": "https://www.npmjs.com/package/@microfox/rest-sdk",
     "icon": "https://raw.githubusercontent.com/microfox-ai/microfox/refs/heads/main/logos/rest-api.svg",
@@ -4235,13 +3841,9 @@
     "title": "Microfox RocketReach",
     "description": "Microfox SDK for RocketReach contact enrichment and B2B intelligence",
     "path": "packages/rocketreach",
-    "dependencies": [
-      "@microfox/core"
-    ],
+    "dependencies": ["@microfox/core"],
     "status": "partial",
-    "apiKeys": [
-      "ROCKETREACH_API_KEY"
-    ],
+    "apiKeys": ["ROCKETREACH_API_KEY"],
     "extraInfo": []
   },
   {
@@ -4249,11 +3851,7 @@
     "title": "Microfox SearXNG",
     "description": "Microfox SDK for the SearXNG meta search engine",
     "path": "packages/searxng",
-    "dependencies": [
-      "@microfox/core",
-      "ky",
-      "zod"
-    ],
+    "dependencies": ["@microfox/core", "ky", "zod"],
     "status": "partial",
     "apiKeys": [],
     "extraInfo": []
@@ -4263,15 +3861,9 @@
     "title": "Microfox SerpAPI",
     "description": "Microfox SDK for SerpAPI Google Search",
     "path": "packages/serpapi",
-    "dependencies": [
-      "@microfox/core",
-      "ky",
-      "zod"
-    ],
+    "dependencies": ["@microfox/core", "ky", "zod"],
     "status": "partial",
-    "apiKeys": [
-      "SERPAPI_API_KEY"
-    ],
+    "apiKeys": ["SERPAPI_API_KEY"],
     "extraInfo": []
   },
   {
@@ -4279,15 +3871,9 @@
     "title": "Microfox Serper",
     "description": "Microfox SDK for Serper Google Search",
     "path": "packages/serper",
-    "dependencies": [
-      "@microfox/core",
-      "ky",
-      "zod"
-    ],
+    "dependencies": ["@microfox/core", "ky", "zod"],
     "status": "partial",
-    "apiKeys": [
-      "SERPER_API_KEY"
-    ],
+    "apiKeys": ["SERPER_API_KEY"],
     "extraInfo": []
   },
   {
@@ -4295,9 +3881,7 @@
     "title": "Microfox Slack Web Tiny",
     "description": "A lightweight, type-safe SDK for interacting with the Slack Web API",
     "path": "packages/slack-web-tiny",
-    "dependencies": [
-      "zod"
-    ],
+    "dependencies": ["zod"],
     "status": "stable",
     "authEndpoint": "/connect/slack",
     "documentation": "https://www.npmjs.com/package/@microfox/slack-web-tiny",
@@ -4378,19 +3962,13 @@
             }
           }
         ],
-        "functionalities": [
-          "sendMessage",
-          "updateMessage",
-          "uploadFile"
-        ]
+        "functionalities": ["sendMessage", "updateMessage", "uploadFile"]
       }
     ],
     "keysInfo": [
       {
         "key": "SLACK_BOT_TOKEN",
-        "constructors": [
-          "createSlackSDK"
-        ],
+        "constructors": ["createSlackSDK"],
         "description": "The bot token for authenticating with the Slack API.",
         "required": true
       }
@@ -4405,16 +3983,9 @@
     "title": "Microfox Social Data",
     "description": "Microfox SDK for accessing Twitter via Social Data",
     "path": "packages/social-data",
-    "dependencies": [
-      "@microfox/core",
-      "ky",
-      "p-throttle",
-      "zod"
-    ],
+    "dependencies": ["@microfox/core", "ky", "p-throttle", "zod"],
     "status": "partial",
-    "apiKeys": [
-      "SOCIAL_DATA_API_KEY"
-    ],
+    "apiKeys": ["SOCIAL_DATA_API_KEY"],
     "extraInfo": []
   },
   {
@@ -4471,16 +4042,9 @@
     "title": "Microfox Tavily",
     "description": "Microfox SDK for Tavily",
     "path": "packages/tavily",
-    "dependencies": [
-      "@microfox/core",
-      "ky",
-      "p-throttle",
-      "zod"
-    ],
+    "dependencies": ["@microfox/core", "ky", "p-throttle", "zod"],
     "status": "partial",
-    "apiKeys": [
-      "TAVILY_API_KEY"
-    ],
+    "apiKeys": ["TAVILY_API_KEY"],
     "extraInfo": []
   },
   {
@@ -4488,15 +4052,9 @@
     "title": "Microfox Twilio",
     "description": "Microfox SDK for Twilio",
     "path": "packages/twilio",
-    "dependencies": [
-      "@microfox/core",
-      "ky",
-      "zod"
-    ],
+    "dependencies": ["@microfox/core", "ky", "zod"],
     "status": "partial",
-    "apiKeys": [
-      "TWILIO_API_KEY"
-    ],
+    "apiKeys": ["TWILIO_API_KEY"],
     "extraInfo": []
   },
   {
@@ -4504,11 +4062,7 @@
     "title": "Microfox X SDK",
     "description": "A lightweight, type-safe SDK for interacting with the X (Twitter) API v2",
     "path": "packages/twitter",
-    "dependencies": [
-      "crypto",
-      "https",
-      "zod"
-    ],
+    "dependencies": ["crypto", "https", "zod"],
     "status": "stable",
     "authEndpoint": "/connect/x",
     "documentation": "https://www.npmjs.com/package/@microfox/twitter",
@@ -4665,33 +4219,25 @@
     "keysInfo": [
       {
         "key": "X_API_KEY",
-        "constructors": [
-          "createXSDK"
-        ],
+        "constructors": ["createXSDK"],
         "description": "Your X API key.",
         "required": true
       },
       {
         "key": "X_API_SECRET",
-        "constructors": [
-          "createXSDK"
-        ],
+        "constructors": ["createXSDK"],
         "description": "Your X API secret key.",
         "required": true
       },
       {
         "key": "X_ACCESS_TOKEN",
-        "constructors": [
-          "createXSDK"
-        ],
+        "constructors": ["createXSDK"],
         "description": "Your X access token.",
         "required": true
       },
       {
         "key": "X_ACCESS_SECRET",
-        "constructors": [
-          "createXSDK"
-        ],
+        "constructors": ["createXSDK"],
         "description": "Your X access token secret.",
         "required": true
       }
@@ -4707,15 +4253,9 @@
     "title": "Microfox Weather",
     "description": "Microfox SDK for weatherapi.com",
     "path": "packages/weather",
-    "dependencies": [
-      "@microfox/core",
-      "ky",
-      "zod"
-    ],
+    "dependencies": ["@microfox/core", "ky", "zod"],
     "status": "partial",
-    "apiKeys": [
-      "WEATHER_API_KEY"
-    ],
+    "apiKeys": ["WEATHER_API_KEY"],
     "extraInfo": []
   },
   {
@@ -4723,9 +4263,7 @@
     "title": "Whatsapp Business",
     "description": "Send messages from Whatsapp Business acount to end users, also types of Whatsapp Business Webhooks",
     "path": "packages/whatsapp-business",
-    "dependencies": [
-      "@microfox/rest-sdk"
-    ],
+    "dependencies": ["@microfox/rest-sdk"],
     "status": "stable",
     "authEndpoint": "/connect/whatsapp",
     "documentation": "https://www.npmjs.com/package/@microfox/whatsapp-business",
@@ -4875,41 +4413,31 @@
     "keysInfo": [
       {
         "key": "WHATSAPP_BUSINESS_PHONE_NUMBER",
-        "constructors": [
-          "WhatsAppBusinessSDK"
-        ],
+        "constructors": ["WhatsAppBusinessSDK"],
         "description": "Your whatsapp business phone number to send the text from",
         "required": true
       },
       {
         "key": "WHATSAPP_PHONE_NUMBER_ID",
-        "constructors": [
-          "WhatsAppBusinessSDK"
-        ],
+        "constructors": ["WhatsAppBusinessSDK"],
         "description": "The phone number ID for the WhatsApp Business API",
         "required": true
       },
       {
         "key": "WHATSAPP_BUSINESS_ACCOUNT_ID",
-        "constructors": [
-          "WhatsAppBusinessSDK"
-        ],
+        "constructors": ["WhatsAppBusinessSDK"],
         "description": "The business account ID for the WhatsApp Business API",
         "required": true
       },
       {
         "key": "WHATSAPP_ACCESS_TOKEN",
-        "constructors": [
-          "WhatsAppBusinessSDK"
-        ],
+        "constructors": ["WhatsAppBusinessSDK"],
         "description": "The access token for the WhatsApp Business API",
         "required": true
       },
       {
         "key": "WHATSAPP_WEBHOOK_VERIFY_TOKEN",
-        "constructors": [
-          "WhatsAppBusinessSDK"
-        ],
+        "constructors": ["WhatsAppBusinessSDK"],
         "description": "The verify token for the WhatsApp Webhook",
         "required": true
       }
@@ -4941,12 +4469,7 @@
     "title": "Microfox Wikipedia",
     "description": "Microfox SDK for Wikipedia",
     "path": "packages/wikipedia",
-    "dependencies": [
-      "@microfox/core",
-      "ky",
-      "p-throttle",
-      "zod"
-    ],
+    "dependencies": ["@microfox/core", "ky", "p-throttle", "zod"],
     "status": "partial",
     "apiKeys": [],
     "extraInfo": []
@@ -4956,15 +4479,9 @@
     "title": "Microfox Wolfram Alpha",
     "description": "Microfox SDK for Wolfram Alpha",
     "path": "packages/wolfram-alpha",
-    "dependencies": [
-      "@microfox/core",
-      "ky",
-      "zod"
-    ],
+    "dependencies": ["@microfox/core", "ky", "zod"],
     "status": "partial",
-    "apiKeys": [
-      "WOLFRAM_ALPHA_API_KEY"
-    ],
+    "apiKeys": ["WOLFRAM_ALPHA_API_KEY"],
     "extraInfo": []
   },
   {
@@ -4972,11 +4489,7 @@
     "title": "Microfox YouTube SDK",
     "description": "YouTube SDK for Microfox",
     "path": "packages/youtube",
-    "dependencies": [
-      "@microfox/google",
-      "@microfox/rest-sdk",
-      "zod"
-    ],
+    "dependencies": ["@microfox/google", "@microfox/rest-sdk", "zod"],
     "status": "stable",
     "authEndpoint": "/connect/google",
     "documentation": "https://www.npmjs.com/package/@microfox/youtube",
@@ -5020,41 +4533,31 @@
     "keysInfo": [
       {
         "key": "GOOGLE_ACCESS_TOKEN",
-        "constructors": [
-          "createYouTubeSDKWithTokens"
-        ],
+        "constructors": ["createYouTubeSDKWithTokens"],
         "description": "The access token for the YouTube client",
         "required": true
       },
       {
         "key": "GOOGLE_REFRESH_TOKEN",
-        "constructors": [
-          "createYouTubeSDKWithTokens"
-        ],
+        "constructors": ["createYouTubeSDKWithTokens"],
         "description": "The refresh token for the YouTube client",
         "required": true
       },
       {
         "key": "GOOGLE_CLIENT_ID",
-        "constructors": [
-          "createYouTubeSDKWithTokens"
-        ],
+        "constructors": ["createYouTubeSDKWithTokens"],
         "description": "The client ID for the YouTube client",
         "required": true
       },
       {
         "key": "GOOGLE_CLIENT_SECRET",
-        "constructors": [
-          "createYouTubeSDKWithTokens"
-        ],
+        "constructors": ["createYouTubeSDKWithTokens"],
         "description": "The client secret for the YouTube client",
         "required": true
       },
       {
         "key": "SCOPES",
-        "constructors": [
-          "createYouTubeSDKWithTokens"
-        ],
+        "constructors": ["createYouTubeSDKWithTokens"],
         "description": "The scopes for the YouTube client",
         "required": true
       }
@@ -5074,13 +4577,7 @@
     "title": "Microfox ZoomInfo",
     "description": "Microfox SDK for ZoomInfo",
     "path": "packages/zoominfo",
-    "dependencies": [
-      "@microfox/core",
-      "jsrsasign",
-      "ky",
-      "p-throttle",
-      "zod"
-    ],
+    "dependencies": ["@microfox/core", "jsrsasign", "ky", "p-throttle", "zod"],
     "status": "partial",
     "apiKeys": [],
     "extraInfo": []

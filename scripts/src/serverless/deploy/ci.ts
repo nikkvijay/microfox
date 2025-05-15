@@ -24,9 +24,10 @@ interface OverwriteConfig {
  */
 async function processPackage(packageName: string, packageConfig: OverwriteConfigPackage = {}): Promise<boolean> {
   const packagePath = path.join(PACKAGES_PATH, packageName);
-  
+  const slsPath = path.join(packagePath, `sls`);
+
   console.log(`Setting environment variables for ${packageName}`);
-  setEnvironmentVariables(packagePath)
+  setEnvironmentVariables(slsPath)
 
   // Skip disabled packages
   if (packageConfig.enabled === false) {

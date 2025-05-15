@@ -19,7 +19,7 @@ export const handler = async (event: any): Promise<any> => {
   console.log("functionName", functionName)
 
   if (functionName === "openapi.json") {
-    const openapi = JSON.parse(fs.readFileSync("../openapi.json", "utf8"));
+    const openapi = JSON.parse(fs.readFileSync("openapi.json", "utf8"));
     return {
       statusCode: 200,
       headers: { "Content-Type": "application/json" },

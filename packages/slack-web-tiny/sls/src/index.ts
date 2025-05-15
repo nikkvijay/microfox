@@ -1,46 +1,64 @@
+// src/index.ts
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
-import { sendMessage } from "./functions/sendMessage.js";
+import { createSlackSDK } from "@microfox/slack-web-tiny";
+import dotenv from "dotenv";
+dotenv.config();
 
-type SDKFunctionMap = {
-  [key: string]: (args: any) => Promise<any>;
-};
-
-// Map function names to actual implementations
-const sdkFunctionMap: SDKFunctionMap = {
-  "send-message": sendMessage,
-};
+type SDKFunc = (args: any) => Promise<any>;
 
 export const handler = async (
   event: APIGatewayProxyEvent
 ): Promise<APIGatewayProxyResult> => {
+  const slackSDK = createSlackSDK({
+    botToken: process.env.SLACK_BOT_TOKEN ?? "",
+    authType: "header",
+  });
+
+  const sdkMap: Record<string, SDKFunc> = {
+    "sendMessage": slackSDK.sendMessage,
+    "updateMessage": slackSDK.updateMessage,
+    "uploadFile": slackSDK.uploadFile,
+  };
+  // Extract the functionName from the path: /execute/{functionName}
+  const segments = event.path.split("/").filter(Boolean);
+  const functionName = segments[segments.length - 1]!;
+  const fn = sdkMap[functionName];
+
+  if (!fn) {
+    return {
+      statusCode: 404,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ error: `Function '${functionName}' not found` }),
+    };
+  }
+
+  // Parse JSON body
+  let args: any;
   try {
-    const path = event.path?.split("/").filter(Boolean).pop(); // extract function name from path
-    const sdkFunction = sdkFunctionMap[path || ""];
+    args = event.body ? JSON.parse(event.body) : {};
+  } catch {
+    return {
+      statusCode: 400,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ error: "Invalid JSON in request body" }),
+    };
+  }
 
-    if (!sdkFunction) {
-      return {
-        statusCode: 404,
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ error: `No function found for path: ${path}` }),
-      };
-    }
-
-    const body = event.body ? JSON.parse(event.body) : {};
-
-    const result = await sdkFunction(body);
-
+  // Invoke the SDK function
+  try {
+    const result = await fn(args);
     return {
       statusCode: 200,
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(result),
     };
-  } catch (error) {
-    console.error("Wrapper function error:", error);
+  } catch (err) {
+    console.error("Error executing SDK function:", err);
     return {
       statusCode: 500,
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        error: error instanceof Error ? error.message : "Unknown error",
+        error: err instanceof Error ? err.message : String(err),
       }),
     };
   }

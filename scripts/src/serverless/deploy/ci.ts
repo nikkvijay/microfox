@@ -5,6 +5,7 @@ import deployPackageSls from './deploy';
 import removePackageSls from './remove';
 import { detectChangedPackageSls } from './detect-changes';
 import { PACKAGES_PATH } from './constants';
+import { setEnvironmentVariables } from './environment';
 
 interface OverwriteConfigPackage {
   enabled?: boolean;
@@ -23,6 +24,9 @@ interface OverwriteConfig {
  */
 async function processPackage(packageName: string, packageConfig: OverwriteConfigPackage = {}): Promise<boolean> {
   const packagePath = path.join(PACKAGES_PATH, packageName);
+  
+  console.log(`Setting environment variables for ${packageName}`);
+  setEnvironmentVariables(packagePath)
 
   // Skip disabled packages
   if (packageConfig.enabled === false) {

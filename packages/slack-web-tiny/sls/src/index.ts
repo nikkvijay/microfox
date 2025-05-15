@@ -1,6 +1,7 @@
 import { createSlackSDK } from '@microfox/slack-web-tiny';
 import crypto from 'crypto';
 import dotenv from 'dotenv';
+import fs from 'fs';
 
 dotenv.config(); // for any local vars
 
@@ -17,7 +18,7 @@ export const handler = async (event: any): Promise<any> => {
   const functionName = segments[segments.length - 1]!;
 
   if (functionName === "openapi.json") {
-    const openapi = JSON.parse(require("fs").readFileSync("openapi.json", "utf8"));
+    const openapi = JSON.parse(fs.readFileSync("openapi.json", "utf8"));
     return {
       statusCode: 200,
       headers: { "Content-Type": "application/json" },

@@ -1,5 +1,12 @@
 # @microfox/drive
 
+## 1.0.4
+
+### Patch Changes
+
+- cf53ec3: Changes from PR #244: brave
+- 66915ed: Changes from PR #237: brave
+
 ## 1.0.3
 
 ### Patch Changes

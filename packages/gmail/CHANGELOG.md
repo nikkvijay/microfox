@@ -1,5 +1,11 @@
 # @microfox/gmail
 
+## 1.1.1
+
+### Patch Changes
+
+- 66915ed: Changes from PR #237: brave
+
 ## 1.1.0
 
 ### Minor Changes

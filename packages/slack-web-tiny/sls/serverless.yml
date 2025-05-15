@@ -15,16 +15,20 @@ functions:
     handler: dist/index.handler
     events:
       - http:
-          path: /execute/send-message
+          path: /sendMessage
           method: post
           cors: true
       - http:
-          path: /execute/update-message
+          path: /updateMessage
           method: post
           cors: true
       - http:
-          path: /execute/upload-file
+          path: /uploadFile
           method: post
+          cors: true
+      - http:
+          path: /openapi.json
+          method: get
           cors: true
 
 resources:

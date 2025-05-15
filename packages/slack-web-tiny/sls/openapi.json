@@ -11,18 +11,12 @@
   },
   "servers": [
     {
-      "url": "https://api.microfox.com/c/slack-web-tiny/execute",
-      "description": "Unified wrapper endpoint",
-      "variables": {
-        "sdkId": {
-          "default": "slack-web-tiny",
-          "description": "Unique SDK identifier"
-        }
-      }
+      "url": "https://api.microfox.com/c/slack-web-tiny",
+      "description": "Unified wrapper endpoint"
     }
   ],
   "paths": {
-    "/send-message": {
+    "/sendMessage": {
       "post": {
         "operationId": "sendMessage",
         "summary": "Send a message to a Slack channel",
@@ -86,7 +80,7 @@
         }
       }
     },
-    "/update-message": {
+    "/updateMessage": {
       "post": {
         "operationId": "updateMessage",
         "summary": "Update an existing Slack message",
@@ -146,7 +140,7 @@
         }
       }
     },
-    "/upload-file": {
+    "/uploadFile": {
       "post": {
         "operationId": "uploadFile",
         "summary": "Upload a file to Slack",

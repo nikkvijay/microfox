@@ -40,9 +40,19 @@ export const handler = async (event: any): Promise<any> => {
     uploadFile: slackSDK.uploadFile,
   };
 
-  // Extract the functionName from the path: /execute/{functionName}
+  // Extract the functionName from the path: /{functionName}
   const segments = event.path.split("/").filter(Boolean);
   const functionName = segments[segments.length - 1]!;
+
+  if (functionName === "openapi.json") {
+    const openapi = JSON.parse(require("fs").readFileSync("openapi.json", "utf8"));
+    return {
+      statusCode: 200,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(openapi),
+    };
+  }
+  
   const fn = sdkMap[functionName];
 
   if (!fn) {

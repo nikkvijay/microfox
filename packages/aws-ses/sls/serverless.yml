@@ -15,6 +15,7 @@ provider:
   runtime: nodejs20.x
   region: us-east-1
   stage: ${env:ENVIRONMENT, 'dev'}
+  environment: ${file(env.json)}
 
 plugins:
   - serverless-plugin-typescript

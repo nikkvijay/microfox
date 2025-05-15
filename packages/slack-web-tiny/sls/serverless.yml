@@ -1,4 +1,4 @@
-service: Public-Slack-API
+service: public-slack-tiny-api
 
 package:
   exclude:

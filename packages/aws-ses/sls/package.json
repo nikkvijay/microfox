@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@microfox/aws-ses": "^1.1.1",
+    "aws-lambda": "^1.0.7",
     "dotenv": "^16.4.5"
   },
   "devDependencies": {

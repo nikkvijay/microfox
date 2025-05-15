@@ -1,5 +1,6 @@
 // Re-export external API functions
-export { sendMessage, sendMessageDocs } from "./functions/sendMessage.js";
+import { sendMessageDocs } from "./functions/sendMessage.js";
+export { sendMessage } from "./functions/sendMessage.js";
 
 /**
  * Complete API documentation

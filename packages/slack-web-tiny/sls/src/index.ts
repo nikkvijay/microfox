@@ -8,6 +8,7 @@ type SDKFunc = (args: any) => Promise<any>;
 export const handler = async (
   event: any
 ): Promise<any> => {
+  console.log("event afsafszf", event);
   const slackSDK = createSlackSDK({
     botToken: process.env.SLACK_BOT_TOKEN ?? "",
     authType: "header",

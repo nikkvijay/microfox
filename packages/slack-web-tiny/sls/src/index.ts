@@ -1,5 +1,4 @@
 // src/index.ts
-import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
 import { createSlackSDK } from "@microfox/slack-web-tiny";
 import dotenv from "dotenv";
 dotenv.config();
@@ -7,9 +6,8 @@ dotenv.config();
 type SDKFunc = (args: any) => Promise<any>;
 
 export const handler = async (
-  event: APIGatewayProxyEvent
-): Promise<APIGatewayProxyResult> => {
-
+  event: any
+): Promise<any> => {
   const slackSDK = createSlackSDK({
     botToken: process.env.SLACK_BOT_TOKEN ?? "",
     authType: "header",

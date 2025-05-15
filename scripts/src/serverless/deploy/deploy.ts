@@ -36,10 +36,10 @@ interface FunctionMetadata {
  * @returns {string|null} - Base URL or null if not found
  */
 function extractBaseUrl(output: string): string | null {
-  // Look for the docs.json endpoint which is constant
-  const docsUrlMatch = output.match(/GET - (https:\/\/[^\/]+)\/.*?\/docs\.json/);
-  if (docsUrlMatch) {
-    return docsUrlMatch[1].replace('/docs.json', '');
+  // Extract the part before /staging
+  const urlMatch = output.match(/(https:\/\/[^\/]+\.amazonaws\.com)/);
+  if (urlMatch) {
+    return `${urlMatch[1]}/${STAGE}`;
   }
   return null;
 }

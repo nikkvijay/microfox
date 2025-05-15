@@ -18,15 +18,6 @@ export const handler = async (event: any): Promise<any> => {
   const functionName = segments[segments.length - 1]!;
   console.log("functionName", functionName)
 
-  if (functionName === "openapi.json") {
-    const openapi = JSON.parse(fs.readFileSync("openapi.json", "utf8"));
-    return {
-      statusCode: 200,
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(openapi),
-    };
-  }
-
   // Read and decrypt header
   // const encoded = event.headers['client-env-variables'] || event.headers['Client-Env-Variables'];
   // if (!encoded) {

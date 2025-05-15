@@ -26,10 +26,6 @@ functions:
           path: /uploadFile
           method: post
           cors: true
-      - http:
-          path: /openapi.json
-          method: get
-          cors: true
 
 resources:
   Outputs:

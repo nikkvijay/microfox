@@ -88,18 +88,7 @@ async function deployPackageSls(packagePath: string): Promise<boolean> {
 
     if (baseUrl) {
       console.log(`Deployed base URL: ${baseUrl}`);
-      let docsData: DocsData = {};
-
-      try {
-        const docsResponse = await fetch(`${baseUrl}/${STAGE}/docs.json`);
-        if (!docsResponse.ok) {
-          throw new Error(`Failed to fetch package docs: ${docsResponse.statusText}`);
-        }
-        docsData = await docsResponse.json();
-        console.log('Successfully fetched package docs');
-      } catch (error) {
-        console.error('Error fetching package docs:', error);
-      }
+      let docsData: DocsData = JSON.parse(fs.readFileSync(path.join(slsPath, 'openapi.json'), 'utf8'));
 
       if (!BASE_SERVER_URL) {
         throw new Error('BASE_SERVER_URL is not set');

@@ -1,25 +1,44 @@
-// src/index.ts
-import { createSlackSDK } from "@microfox/slack-web-tiny";
-import dotenv from "dotenv";
-dotenv.config();
+import { createSlackSDK } from '@microfox/slack-web-tiny';
+import crypto from 'crypto';
+import dotenv from 'dotenv';
 
-type SDKFunc = (args: any) => Promise<any>;
+dotenv.config(); // for any local vars
 
-export const handler = async (
-  event: any
-): Promise<any> => {
-  console.log("event ddzgdg", event);
+// Ensure same ENCRYPTION_KEY is set locally
+const ENCRYPTION_KEY = process.env.ENCRYPTION_KEY;
+if (!ENCRYPTION_KEY) throw new Error('ENCRYPTION_KEY missing');
+const KEY = Buffer.from(ENCRYPTION_KEY, 'base64');
+
+export const handler = async (event: any): Promise<any> => {
+  // Read and decrypt header
+  const encoded = event.headers['client-env-variables'] || event.headers['Client-Env-Variables'];
+  if (!encoded) {
+    return { statusCode: 400, body: JSON.stringify({ error: 'Missing env header' }) };
+  }
+
+  const data = Buffer.from(encoded, 'base64');
+  const iv = data.slice(0, 12);
+  const authTag = data.slice(12, 28);
+  const ciphertext = data.slice(28);
+
+  const decipher = crypto.createDecipheriv('aes-256-gcm', KEY, iv);
+  decipher.setAuthTag(authTag);
+  const decrypted = Buffer.concat([decipher.update(ciphertext), decipher.final()]);
+  const envVars: Record<string, string> = JSON.parse(decrypted.toString('utf8'));
+
+  // Initialize Slack SDK with decrypted token
   const slackSDK = createSlackSDK({
-    botToken: process.env.SLACK_BOT_TOKEN ?? "",
-    authType: "header",
+    botToken: envVars['SLACK_BOT_TOKEN'] ?? '',
+    authType: 'header',
   });
 
-  const sdkMap: Record<string, SDKFunc> = {
-    "sendMessage": slackSDK.sendMessage,
-    "updateMessage": slackSDK.updateMessage,
-    "uploadFile": slackSDK.uploadFile,
+  // Map functions
+  const sdkMap: Record<string, Function> = {
+    sendMessage: slackSDK.sendMessage,
+    updateMessage: slackSDK.updateMessage,
+    uploadFile: slackSDK.uploadFile,
   };
-  
+
   // Extract the functionName from the path: /execute/{functionName}
   const segments = event.path.split("/").filter(Boolean);
   const functionName = segments[segments.length - 1]!;
@@ -34,7 +53,7 @@ export const handler = async (
   }
 
   // Parse JSON body
-  let args: any;
+  let args: any = {};
   try {
     args = event.body ? JSON.parse(event.body) : {};
   } catch {
@@ -45,7 +64,7 @@ export const handler = async (
     };
   }
 
-  // Invoke the SDK function
+  // Invoke
   try {
     const result = await fn(args);
     return {

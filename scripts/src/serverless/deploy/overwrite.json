@@ -1,6 +1,6 @@
 {
   "aws-ses": {
-    "enabled": false,
+    "enabled": true,
     "destroy": false
   }
 }

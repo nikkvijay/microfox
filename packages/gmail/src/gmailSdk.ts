@@ -31,8 +31,13 @@ export class GmailSDK {
     this.oauth = new GoogleOAuthSdk({
       clientId: validatedConfig.clientId,
       clientSecret: validatedConfig.clientSecret,
-      redirectUri: validatedConfig.redirectUri,
-      scopes: [GoogleScope.GMAIL_FULL],
+      redirectUri: '',
+      scopes: validatedConfig?.scopes ?? [
+        'https://www.googleapis.com/auth/gmail.readonly',
+        'https://www.googleapis.com/auth/gmail.insert',
+        'https://www.googleapis.com/auth/gmail.modify',
+        'https://www.googleapis.com/auth/gmail.compose',
+      ],
     });
     this.accessToken = validatedConfig.accessToken || '';
     this.refreshToken = validatedConfig.refreshToken || '';

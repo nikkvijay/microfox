@@ -32,6 +32,7 @@ const apiDocs = {
         },
     },
 };
+
 /**
  * GET endpoint to serve API documentation
  * This Lambda function returns the complete API documentation in JSON format

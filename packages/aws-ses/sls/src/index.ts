@@ -1,6 +1,7 @@
 // Re-export external API functions
 export { sendSingleEmail, sendSingleEmailDocs } from "./functions/sendSingleEmail.js";
 export { sendBulkEmail, sendBulkEmailDocs } from "./functions/sendBulkEmail.js";
+
 /**
  * Complete API documentation
  * Write down this apiDocs on the basis of open api 3.0.1 in JSON format

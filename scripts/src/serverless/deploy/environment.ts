@@ -15,6 +15,7 @@ function setEnvironmentVariables(functionDir: string) {
         NODE_ENV: STAGE,
         STAGE: STAGE,
         MICROFOX_API_KEY: process.env.MICROFOX_API_KEY || "",
+        ENCRYPTION_KEY: process.env.ENCRYPTION_KEY || "",
     }
 
     // write an env.json file in the same folder as serverless.yml

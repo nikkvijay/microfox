@@ -34,6 +34,11 @@ function detectChangedPackageSls(): PackagePath[] {
   try {
     // Get the list of changed files between commits
     let diffCommand: string;
+    console.log('GITHUB_BEFORE', process.env.GITHUB_BEFORE);
+    console.log('GITHUB_AFTER', process.env.GITHUB_AFTER);
+    console.log('GITHUB_BEFORE2', process.env.GITHUB_BEFORE2);
+    console.log('GITHUB_AFTER2', process.env.GITHUB_AFTER2);
+    console.log('GITHUB_REF', process.env.GITHUB_REF);
 
     // Check if GITHUB_BEFORE and GITHUB_AFTER environment variables are available
     // These are available in push events and contain the SHA before and after the push

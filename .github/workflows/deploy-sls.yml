@@ -29,6 +29,9 @@ jobs:
           AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
           GITHUB_BEFORE: ${{ github.before }}
           GITHUB_AFTER: ${{ github.after }}
+          GITHUB_REF: ${{ github.ref }}
+          GITHUB_BEFORE2: ${{ env.GITHUB_BEFORE }}
+          GITHUB_AFTER2: ${{ env.GITHUB_AFTER }}
         run: |
           cd scripts
           npm install

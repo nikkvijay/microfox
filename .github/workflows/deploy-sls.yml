@@ -1,0 +1,35 @@
+name: Serverless Deployment
+
+on:
+  push:
+    branches:
+      - main
+      - vwjt_sls_deploy_may_25
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Fetch all history for git commands
+
+      - name: Use Node.js 23.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: '23'
+
+      - name: Run CI/CD deployment script
+        env:
+          MICROFOX_API_KEY: ${{ vars.MICROFOX_API_KEY }}
+          AWS_ACCESS_KEY_ID: ${{ vars.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ vars.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ vars.AWS_DEFAULT_REGION }}
+          AWS_DEFAULT_REGION: ${{ vars.AWS_DEFAULT_REGION }}
+          GITHUB_BEFORE: ${{ vars.GITHUB_BEFORE }}
+          GITHUB_AFTER: ${{ vars.GITHUB_AFTER }}
+        run: |
+          cd scripts
+          npm install
+          ts-node src/serverless/deploy/ci.ts

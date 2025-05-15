@@ -1,0 +1,54 @@
+service: Public-Slack-API
+
+package:
+  exclude:
+    - venv/**
+    - src/**
+
+# Configuration
+custom:
+  # Get environment from env or default to dev
+  stage: ${env:ENVIRONMENT, 'dev'}
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: us-east-1
+  stage: ${env:ENVIRONMENT, 'dev'}
+  environment: ${file(env.json)}
+
+plugins:
+  - serverless-plugin-typescript
+
+functions:
+  # Slack API Functions
+  sendMessage:
+    handler: dist/index.sendMessage
+    events:
+      - http:
+          path: /api/send-message
+          method: post
+          cors: true
+
+  # Documentation
+  getDocs:
+    handler: dist/index.getDocs
+    events:
+      - http:
+          path: /docs.json
+          method: get
+          cors: true
+
+# Resources for API Gateway
+resources:
+  Outputs:
+    ApiEndpoints:
+      Description: "API Endpoints"
+      Value:
+        Fn::Join:
+          - ""
+          - - "API: https://"
+            - Ref: "ApiGatewayRestApi"
+            - ".execute-api."
+            - Ref: "AWS::Region"
+            - ".amazonaws.com/${env:ENVIRONMENT, 'dev'}"

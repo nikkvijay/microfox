@@ -13,11 +13,11 @@ $$;
 -- Main embeddings table
 CREATE TABLE IF NOT EXISTS api_embeddings (
   id                         UUID             PRIMARY KEY DEFAULT gen_random_uuid(),
-  user_id                    TEXT             NOT NULL,
+  user_id                    TEXT             NULL,
   bot_project_id             TEXT             NULL,
   origin_client_request_id   TEXT             NULL,
   base_url                   TEXT             NOT NULL,
-  schema_path                TEXT             NOT NULL,             -- e.g. "/docs.json"
+  schema_path                TEXT             NULL,                 -- e.g. "/docs.json"
   endpoint_path              TEXT             NOT NULL,             -- e.g. "/api/send-message"
   http_method                TEXT             NOT NULL,             -- e.g. "POST"
   doc_text                   TEXT             NOT NULL,             -- concatenated context sent to embedder

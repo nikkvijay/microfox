@@ -14,6 +14,7 @@ interface DocsData {
 
 interface FunctionMetadata {
   name: string;
+  package_name: string;
   base_url: string;
   stage: string;
   type: string;
@@ -95,7 +96,8 @@ async function deployPackageSls(packagePath: string): Promise<boolean> {
       }
 
       const functionMetadata: FunctionMetadata = {
-        name: packageName,
+        name: `public-${packageName}-${STAGE}-api`,
+        package_name: packageName,
         base_url: baseUrl,
         stage: STAGE.toUpperCase(),
         type: 'MIXED',

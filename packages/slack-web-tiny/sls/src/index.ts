@@ -1,5 +1,6 @@
 // Re-export external API functions
 export { sendMessage, sendMessageDocs } from "./functions/sendMessage.js";
+
 /**
  * Complete API documentation
  * Write down this apiDocs on the basis of open api 3.0.1 in JSON format

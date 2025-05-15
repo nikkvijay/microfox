@@ -4,12 +4,6 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-// Initialize the Slack SDK
-const slackSDK = createSlackSDK({
-  botToken: process.env.SLACK_BOT_TOKEN ?? '',
-  authType: 'header',
-});
-
 /**
  * Send a message to a Slack user or channel
  * @param event - The API Gateway event
@@ -19,6 +13,12 @@ export const sendMessage = async (
   event: APIGatewayProxyEvent
 ): Promise<APIGatewayProxyResult> => {
   try {
+    // Initialize the Slack SDK
+    const slackSDK = createSlackSDK({
+      botToken: process.env.SLACK_BOT_TOKEN ?? '',
+      authType: 'header',
+    });
+
     // Parse request body
     const body = event.body ? JSON.parse(event.body) : {};
     const { recipient, message } = body;

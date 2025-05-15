@@ -4,13 +4,6 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-// Create SES SDK instance
-const ses = createSESSdk({
-  accessKeyId: process.env.AWS_SES_ACCESS_KEY_ID!,
-  secretAccessKey: process.env.AWS_SES_SECRET_ACCESS_KEY!,
-  region: process.env.AWS_SES_REGION!,
-});
-
 /**
  * Sends a single email using AWS SES
  */
@@ -18,6 +11,13 @@ export const sendSingleEmail = async (
   event: APIGatewayProxyEvent
 ): Promise<APIGatewayProxyResult> => {
   try {
+    // Initialize AWS SES client
+    const ses = createSESSdk({
+      accessKeyId: process.env.AWS_SES_ACCESS_KEY_ID!,
+      secretAccessKey: process.env.AWS_SES_SECRET_ACCESS_KEY!,
+      region: process.env.AWS_SES_REGION!,
+    });
+
     // Parse request body
     const body = event.body ? JSON.parse(event.body) : {};
     const { sender, recipient, subject, bodyText, bodyHtml, displayName } = body;
@@ -45,7 +45,7 @@ export const sendSingleEmail = async (
       bodyHtml,
       displayName,
     };
-    
+
     // Send email using AWS SES
     const response = await ses.sendEmail(emailParams);
 

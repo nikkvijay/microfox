@@ -14,7 +14,7 @@ interface DocsData {
 
 interface FunctionMetadata {
   name: string;
-  baseUrl: string;
+  base_url: string;
   stage: string;
   type: string;
   endpoints: any[];
@@ -22,7 +22,7 @@ interface FunctionMetadata {
     description?: string;
     version?: string;
     title?: string;
-    docData?: DocsData;
+    docs_data?: DocsData;
     serverless: {
       stage: string;
       output: string;
@@ -96,7 +96,7 @@ async function deployPackageSls(packagePath: string): Promise<boolean> {
 
       const functionMetadata: FunctionMetadata = {
         name: packageName,
-        baseUrl: baseUrl,
+        base_url: baseUrl,
         stage: STAGE.toUpperCase(),
         type: 'MIXED',
         endpoints: [],
@@ -104,7 +104,7 @@ async function deployPackageSls(packagePath: string): Promise<boolean> {
           description: docsData?.info?.description,
           version: docsData?.info?.version,
           title: docsData?.info?.title,
-          docData: docsData,
+          docs_data: docsData,
           serverless: {
             stage: STAGE.toUpperCase(),
             output,

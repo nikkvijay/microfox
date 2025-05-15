@@ -27,11 +27,8 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
           AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
-          GITHUB_BEFORE: ${{ github.before }}
-          GITHUB_AFTER: ${{ github.after }}
-          GITHUB_REF: ${{ github.ref }}
-          GITHUB_BEFORE2: ${{ env.GITHUB_BEFORE }}
-          GITHUB_AFTER2: ${{ env.GITHUB_AFTER }}
+          GITHUB_BEFORE: ${{ github.event.before }}
+          GITHUB_AFTER: ${{ github.event.after }}
         run: |
           cd scripts
           npm install

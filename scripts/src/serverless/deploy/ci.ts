@@ -53,6 +53,14 @@ async function processPackage(packageName: string, packageConfig: OverwriteConfi
 
 async function main(): Promise<void> {
   try {
+    const awsConfig = {
+      region: process.env.AWS_REGION,
+      accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    };
+
+    console.log('AWS Config:', awsConfig);
+    
     // Detect changed packages
     const changedPackagesSls = detectChangedPackageSls();
     console.log('Changed packages:', JSON.stringify(changedPackagesSls, null, 2));

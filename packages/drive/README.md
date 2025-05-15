@@ -42,10 +42,10 @@ import { createDriveSDKWithTokens } from '@microfox/drive';
 
 // Create a Drive SDK instance with token management
 const driveSDK = await createDriveSDKWithTokens({
-  driveAccessToken: 'your-access-token',
-  driveRefreshToken: 'your-refresh-token',
-  clientId: 'your-client-id',
-  clientSecret: 'your-client-secret',
+  driveAccessToken: process.env.DRIVE_ACCESS_TOKEN,
+  driveRefreshToken: process.env.DRIVE_REFRESH_TOKEN,
+  clientId: process.env.GOOGLE_CLIENT_ID,
+  clientSecret: process.env.GOOGLE_CLIENT_SECRET,
 });
 
 // SDK will automatically handle token validation and refresh
@@ -78,15 +78,6 @@ DRIVE_ACCESS_TOKEN=your-access-token
 DRIVE_REFRESH_TOKEN=your-refresh-token
 GOOGLE_CLIENT_ID=your-client-id
 GOOGLE_CLIENT_SECRET=your-client-secret
-```
-
-Or use these more generic variables that work across Google services:
-
-```
-GOOGLE_ACCESS_TOKEN=your-access-token
-GOOGLE_REFRESH_TOKEN=your-refresh-token
-OAUTH_CLIENT_ID=your-client-id
-OAUTH_CLIENT_SECRET=your-client-secret
 ```
 
 ## API Reference

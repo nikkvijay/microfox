@@ -9,10 +9,9 @@
   "authEndpoint": "/connect/google-oauth",
   "oauth2Scopes": [
     "https://www.googleapis.com/auth/gmail.readonly",
-    "https://www.googleapis.com/auth/gmail.send",
     "https://www.googleapis.com/auth/gmail.compose",
     "https://www.googleapis.com/auth/gmail.modify",
-    "https://www.googleapis.com/auth/gmail.full"
+    "https://www.googleapis.com/auth/gmail.insert"
   ],
   "documentation": "https://www.npmjs.com/package/@microfox/gmail",
   "icon": "https://raw.githubusercontent.com/microfox-ai/microfox/refs/heads/main/logos/google-gmail.svg",
@@ -121,19 +120,25 @@
           "description": "Your Google OAuth client secret"
         },
         {
-          "key": "GOOGLE_REDIRECT_URI",
-          "displayName": "Google Redirect URI",
-          "description": "The redirect URI for your application"
-        },
-        {
-          "key": "GOOGLE_ACCESS_TOKEN",
+          "key": "GMAIL_ACCESS_TOKEN",
           "displayName": "Google Access Token",
           "description": "The access token for the Google OAuth application"
         },
         {
-          "key": "GOOGLE_REFRESH_TOKEN",
+          "key": "GMAIL_REFRESH_TOKEN",
           "displayName": "Google Refresh Token",
           "description": "The refresh token for the Google OAuth application"
+        },
+        {
+          "key": "SCOPES",
+          "displayName": "Scopes",
+          "description": "The scopes for the Google OAuth application",
+          "defaultValue": [
+            "https://www.googleapis.com/auth/gmail.readonly",
+            "https://www.googleapis.com/auth/gmail.compose",
+            "https://www.googleapis.com/auth/gmail.modify",
+            "https://www.googleapis.com/auth/gmail.insert"
+          ]
         }
       ],
       "functionalities": [
@@ -164,22 +169,28 @@
       "required": true
     },
     {
-      "key": "GOOGLE_REDIRECT_URI",
-      "constructors": ["createGmailSDK"],
-      "description": "The redirect URI for your application",
-      "required": true
-    },
-    {
-      "key": "GOOGLE_ACCESS_TOKEN",
+      "key": "GMAIL_ACCESS_TOKEN",
       "constructors": ["createGmailSDK"],
       "description": "The access token for the Google OAuth application",
       "required": false
     },
     {
-      "key": "GOOGLE_REFRESH_TOKEN",
+      "key": "GMAIL_REFRESH_TOKEN",
       "constructors": ["createGmailSDK"],
       "description": "The refresh token for the Google OAuth application",
       "required": false
+    },
+    {
+      "key": "SCOPES",
+      "constructors": ["createGmailSDK"],
+      "description": "The scopes for the Google OAuth application",
+      "required": false,
+      "defaultValue": [
+        "https://www.googleapis.com/auth/gmail.readonly",
+        "https://www.googleapis.com/auth/gmail.compose",
+        "https://www.googleapis.com/auth/gmail.modify",
+        "https://www.googleapis.com/auth/gmail.insert"
+      ]
     }
   ],
   "extraInfo": [

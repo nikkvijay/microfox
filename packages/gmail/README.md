@@ -24,8 +24,8 @@ You can obtain these credentials by following the OAuth 2.0 flow for Gmail.
 
 The following environment variables are used by this SDK:
 
-- `accessToken`: Your OAuth access token (Required)
-- `refreshToken`: Your OAuth refresh token (Required)
+- `GMAIL_ACCESS_TOKEN`: Your OAuth access token (Required)
+- `GMAIL_REFRESH_TOKEN`: Your OAuth refresh token (Required)
 - `GOOGLE_CLIENT_ID`: Your Google OAuth client ID (Required)
 - `GOOGLE_CLIENT_SECRET`: Your Google OAuth client secret (Required)
 - `GOOGLE_REDIRECT_URI`: The redirect URI for your application (Required)
@@ -46,14 +46,10 @@ To use this SDK, you need to set up a Google Cloud project and enable the Gmail 
 
 Environment variables:
 
-- GOOGLE_ACCESS_TOKEN: The access token after the oauth authentication
-
-- GOOGLE_REFRESH_TOKEN: The refresh token after the oauth authentication
-
+- GMAIL_ACCESS_TOKEN: The access token after the oauth authentication
+- GMAIL_REFRESH_TOKEN: The refresh token after the oauth authentication
 - GOOGLE_CLIENT_ID: Your Google OAuth client ID
-
 - GOOGLE_CLIENT_SECRET: Your Google OAuth client secret
-
 - GOOGLE_REDIRECT_URI: The redirect URI for your application
 
 To use the SDK, you can create an instance like this:
@@ -62,15 +58,11 @@ To use the SDK, you can create an instance like this:
 import { createGmailSDK } from 'gmail';
 
 const gmailSdk = createGmailSDK({
-  accessToken: process.env.GOOGLE_ACCESS_TOKEN!,
-
-  refreshToken: process.env.GOOGLE_REFRESH_TOKEN!,
-
+  accessToken: process.env.GMAIL_ACCESS_TOKEN!,
+  refreshToken: process.env.GMAIL_REFRESH_TOKEN!,
   clientId: process.env.GOOGLE_CLIENT_ID!,
-
   clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-
-  redirectUri: process.env.GOOGLE_REDIRECT_URI!,
+  scopes: process.env.SCOPES,
 });
 ```
 
@@ -95,7 +87,7 @@ It takes a GmailSDKConfig object as a parameter, which configures the OAuth 2.0 
   - `refreshToken`: The refresh token after the oauth authentication
   - `clientId`: The client ID for the Google OAuth application.
   - `clientSecret`: The client secret for the Google OAuth application.
-  - `redirectUri`: The redirect URI for the Google OAuth flow.
+  - `scopes`: SCOPES needed to access
   - `userId` (optional): The user ID to use for API requests. Defaults to 'me'.
 
 **Usage Example:**
@@ -104,11 +96,11 @@ It takes a GmailSDKConfig object as a parameter, which configures the OAuth 2.0 
 import { createGmailSDK } from 'gmail';
 
 const gmailSdk = createGmailSDK({
-  accessToken: process.env.GOOGLE_ACCESS_TOKEN!,
-  refreshToken: process.env.GOOGLE_REFRESH_TOKEN!,
+  accessToken: process.env.GMAIL_ACCESS_TOKEN!,
+  refreshToken: process.env.GMAIL_REFRESH_TOKEN!,
   clientId: process.env.GOOGLE_CLIENT_ID!,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-  redirectUri: process.env.GOOGLE_REDIRECT_URI!,
+  scopes: process.env.SCOPES,
 });
 ```
 

@@ -19,6 +19,10 @@ export const GmailSDKConfigSchema = z.object({
     .string()
     .url()
     .describe('The redirect URI for the Google OAuth flow'),
+  scopes: z
+    .array(z.string())
+    .optional()
+    .describe('The scopes for the Google OAuth application'),
   userId: z
     .string()
     .optional()

@@ -68,4 +68,37 @@ const threadResponse = await slackSDK.sendMessage({
   text: 'Reply in thread',
   thread_ts: '1234567890.123456', // Thread timestamp
 });
+
+// Example 4: Message with buttons
+const response3 = await sdk.sendMessage({
+  channel: '#general',
+  text: 'Message with interactive buttons',
+  blocks: [
+    sdk.blocks.section('Choose an action:'),
+    {
+      type: 'section',
+      text: sdk.blocks.text('Click a button to continue'),
+      accessory: sdk.blocks.button('Redirect Action', 'primary_action', {
+        value: 'non-styled-button',
+        url: 'https://example.com',
+      }),
+    },
+    {
+      type: 'section',
+      text: sdk.blocks.text('Click a button to continue'),
+      accessory: sdk.blocks.button('Primary Action', 'primary_action', {
+        style: 'primary',
+        value: 'primary_value',
+      }),
+    },
+    {
+      type: 'section',
+      text: sdk.blocks.text('Or choose an alternative'),
+      accessory: sdk.blocks.button('Danger Action', 'danger_action', {
+        style: 'danger',
+        confirm: true,
+      }),
+    },
+  ],
+});
 ```

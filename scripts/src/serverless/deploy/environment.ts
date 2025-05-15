@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { MODE } from "./constants";
+import { STAGE } from "./constants";
 
 /**
  * Set environment variables in process.env
@@ -8,12 +8,12 @@ import { MODE } from "./constants";
  */
 function setEnvironmentVariables(functionDir: string) {
     // Set mode-specific variables
-    process.env.NODE_ENV = MODE.toLowerCase()
-    process.env.STAGE = getStageFromMode(MODE)
+    process.env.NODE_ENV = STAGE
+    process.env.STAGE = STAGE
 
     const envJson: Record<string, string> = {
-        NODE_ENV: MODE,
-        STAGE: getStageFromMode(MODE),
+        NODE_ENV: STAGE,
+        STAGE: STAGE,
         MICROFOX_API_KEY: process.env.MICROFOX_API_KEY || "",
     }
 
@@ -22,28 +22,6 @@ function setEnvironmentVariables(functionDir: string) {
     fs.writeFileSync(envFilePath, JSON.stringify(envJson, null, 2))
 }
 
-/**
-* Map environment mode to stage name
-* @param {string} mode - The environment mode (PROD, STAGING, DEV, PREVIEW)
-* @returns {string} - The stage name (prod, staging, dev, preview)
-*/
-function getStageFromMode(mode: string) {
-    const stageMap = {
-        PROD: 'prod',
-        STAGING: 'staging',
-        DEV: 'dev',
-        PREVIEW: 'preview'
-    }
-
-    const stage = stageMap[mode as keyof typeof stageMap]
-    if (!stage) {
-        throw new Error(`Invalid mode: ${mode}`)
-    }
-
-    return stage
-}
-
 export {
     setEnvironmentVariables,
-    getStageFromMode
 }

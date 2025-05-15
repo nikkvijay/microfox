@@ -1,7 +1,7 @@
 import { execSync } from 'child_process';
 import * as path from 'path';
 import * as fs from 'fs';
-import { BASE_SERVER_URL, MODE } from './constants';
+import { BASE_SERVER_URL, STAGE } from './constants';
 
 /**
  * Remove a Serverless function
@@ -24,7 +24,7 @@ async function removePackageSls(packagePath: string): Promise<boolean> {
     process.chdir(slsPath);
 
     // Remove using serverless framework
-    const removeCommand = `serverless remove --stage ${MODE}`;
+    const removeCommand = `serverless remove --stage ${STAGE}`;
     console.log('Running command:', removeCommand);
 
     execSync(removeCommand, { stdio: 'inherit' });

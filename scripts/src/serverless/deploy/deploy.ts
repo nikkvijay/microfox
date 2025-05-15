@@ -1,7 +1,7 @@
 import { execSync } from 'child_process';
 import * as fs from 'fs';
 import * as path from 'path';
-import { BASE_SERVER_URL, MODE } from './constants';
+import { BASE_SERVER_URL, STAGE } from './constants';
 
 interface DocsData {
   info?: {
@@ -75,7 +75,7 @@ async function deployPackageSls(packagePath: string): Promise<boolean> {
 
     // Deploy using serverless framework
     console.log('Deploying with serverless framework...');
-    const deployCommand = `npx serverless deploy --stage ${MODE}`;
+    const deployCommand = `npx serverless deploy --stage ${STAGE}`;
     console.log('Running command:', deployCommand);
 
     const output = execSync(deployCommand, { encoding: 'utf8' });
@@ -91,7 +91,7 @@ async function deployPackageSls(packagePath: string): Promise<boolean> {
       let docsData: DocsData = {};
 
       try {
-        const docsResponse = await fetch(`${baseUrl}/${MODE}/docs.json`);
+        const docsResponse = await fetch(`${baseUrl}/${STAGE}/docs.json`);
         if (!docsResponse.ok) {
           throw new Error(`Failed to fetch package docs: ${docsResponse.statusText}`);
         }
@@ -108,7 +108,7 @@ async function deployPackageSls(packagePath: string): Promise<boolean> {
       const functionMetadata: FunctionMetadata = {
         name: packageName,
         baseUrl: baseUrl,
-        stage: MODE,
+        stage: STAGE.toUpperCase(),
         type: 'MIXED',
         endpoints: [],
         metadata: {
@@ -117,7 +117,7 @@ async function deployPackageSls(packagePath: string): Promise<boolean> {
           title: docsData?.info?.title,
           docData: docsData,
           serverless: {
-            stage: MODE,
+            stage: STAGE.toUpperCase(),
             output,
           },
         },

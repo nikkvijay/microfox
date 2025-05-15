@@ -9,6 +9,7 @@ type SDKFunc = (args: any) => Promise<any>;
 export const handler = async (
   event: APIGatewayProxyEvent
 ): Promise<APIGatewayProxyResult> => {
+
   const slackSDK = createSlackSDK({
     botToken: process.env.SLACK_BOT_TOKEN ?? "",
     authType: "header",
@@ -19,6 +20,7 @@ export const handler = async (
     "updateMessage": slackSDK.updateMessage,
     "uploadFile": slackSDK.uploadFile,
   };
+  
   // Extract the functionName from the path: /execute/{functionName}
   const segments = event.path.split("/").filter(Boolean);
   const functionName = segments[segments.length - 1]!;

@@ -32,4 +32,4 @@ jobs:
         run: |
           cd scripts
           npm install
-          ts-node src/serverless/deploy/ci.ts
+          npm run deploy:sls

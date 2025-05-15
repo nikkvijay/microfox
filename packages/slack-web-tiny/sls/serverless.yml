@@ -1,15 +1,5 @@
 service: public-slack-tiny-api
 
-package:
-  exclude:
-    - venv/**
-    - src/**
-
-# Configuration
-custom:
-  # Get environment from env or default to dev
-  stage: ${env:ENVIRONMENT, 'dev'}
-
 provider:
   name: aws
   runtime: nodejs20.x
@@ -21,25 +11,18 @@ plugins:
   - serverless-plugin-typescript
 
 functions:
-  # Slack API Functions
-  sendMessage:
-    handler: dist/index.sendMessage
+  microfoxSdk:
+    handler: dist/index.wrapperHandler
     events:
       - http:
-          path: /api/send-message
+          path: /api/execute
           method: post
           cors: true
-
-  # Documentation
-  getDocs:
-    handler: dist/index.getDocs
-    events:
       - http:
           path: /docs.json
           method: get
           cors: true
 
-# Resources for API Gateway
 resources:
   Outputs:
     ApiEndpoints:
@@ -51,4 +34,4 @@ resources:
             - Ref: "ApiGatewayRestApi"
             - ".execute-api."
             - Ref: "AWS::Region"
-            - ".amazonaws.com/${env:ENVIRONMENT, 'dev'}"
+            - "/${env:ENVIRONMENT, 'dev'}"

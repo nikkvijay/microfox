@@ -1,67 +1,60 @@
-// Re-export external API functions
-import { sendMessageDocs } from "./functions/sendMessage.js";
-export { sendMessage } from "./functions/sendMessage.js";
+import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
+import { sendMessage } from './functions/sendMessage';
+import { sendMessageDocs } from './functions/sendMessage';
 
-/**
- * Complete API documentation
- * Write down this apiDocs on the basis of open api 3.0.1 in JSON format
- * The required subdocuments for endpoints can be imported from above imports
- */
-const apiDocs = {
-    openapi: "3.0.1",
-    info: {
-        title: "Slack API Integration",
-        version: "1.0.0",
-        description: "API for handling slack messages",
-        contact: {
-            name: "API Support",
-            email: "support@microfox.com",
-        },
-    },
-    servers: [
-        {
-            url: "https://api.microfox.com/c/2121b4fc-e905-4d75-8ec9-b3bb8088285e",
-            description: "Production server",
-        },
-    ],
-    paths: {
-        "/send-message": {
-            post: sendMessageDocs,
-        },
-        "/docs.json": {
-            get: getDocs,
-        },
-    },
+// Map function names to handlers and docs
+const handlers: Record<string, (event: APIGatewayProxyEvent) => Promise<APIGatewayProxyResult>> = {
+  sendMessage,
 };
 
-/**
- * GET endpoint to serve API documentation
- * This Lambda function returns the complete API documentation in JSON format
- */
-export const getDocs = async (event) => {
-    try {
-        return {
-            statusCode: 200,
-            headers: {
-                "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Credentials": true,
-            },
-            body: JSON.stringify(apiDocs, null, 2),
-        };
+const docsMap: Record<string, any> = {
+  'send-message': sendMessageDocs,
+};
+
+// Build OpenAPI spec dynamically
+const apiDocs = {
+  openapi: '3.0.1',
+  info: {
+    title: 'Slack API Integration',
+    version: '1.0.0',
+    description: 'API for handling slack messages',
+    contact: { name: 'API Support', email: 'support@microfox.com' },
+  },
+  servers: [{ url: `https://api.microfox.com/c/2121b4fc-e905-4d75-8ec9-b3bb8088285e`, description: 'Production server' }],
+  paths: Object.fromEntries(
+    Object.entries(docsMap).map(([path, doc]) => [`/${path}`, { post: doc }])
+  ),
+};
+
+export const wrapperHandler = async (
+  event: APIGatewayProxyEvent
+): Promise<APIGatewayProxyResult> => {
+  const { path, httpMethod } = event;
+
+  // Serve docs
+  if (path === '/docs.json' && httpMethod === 'GET') {
+    return {
+      statusCode: 200,
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Credentials': true,
+      },
+      body: JSON.stringify(apiDocs, null, 2),
+    };
+  }
+
+  // Execute function
+  if (path.startsWith('/execute') && httpMethod === 'POST') {
+    const pathParts = path.split('/');
+    const functionName = pathParts[1];
+    console.log(functionName);
+    const handler = handlers[functionName];
+    if (!handler) {
+      return { statusCode: 400, body: JSON.stringify({ error: 'Unknown function' }) };
     }
-    catch (error) {
-        console.error("Error serving docs:", error);
-        return {
-            statusCode: 500,
-            headers: {
-                "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Credentials": true,
-            },
-            body: JSON.stringify({
-                error: error instanceof Error ? error.message : "Unknown error",
-            }),
-        };
-    }
+    return handler(event);
+  }
+
+  return { statusCode: 404, body: 'Not found' };
 };

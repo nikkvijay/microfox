@@ -11,16 +11,12 @@ plugins:
   - serverless-plugin-typescript
 
 functions:
-  microfoxSdk:
-    handler: dist/index.wrapperHandler
+  unifiedHandler:
+    handler: dist/index.handler
     events:
       - http:
-          path: /api/execute
+          path: /execute/{functionName}
           method: post
-          cors: true
-      - http:
-          path: /docs.json
-          method: get
           cors: true
 
 resources:

@@ -1,60 +1,47 @@
-import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
-import { sendMessage } from './functions/sendMessage';
-import { sendMessageDocs } from './functions/sendMessage';
+import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
+import { sendMessage } from "./functions/sendMessage.js";
 
-// Map function names to handlers and docs
-const handlers: Record<string, (event: APIGatewayProxyEvent) => Promise<APIGatewayProxyResult>> = {
-  sendMessage,
+type SDKFunctionMap = {
+  [key: string]: (args: any) => Promise<any>;
 };
 
-const docsMap: Record<string, any> = {
-  'send-message': sendMessageDocs,
+// Map function names to actual implementations
+const sdkFunctionMap: SDKFunctionMap = {
+  "send-message": sendMessage,
 };
 
-// Build OpenAPI spec dynamically
-const apiDocs = {
-  openapi: '3.0.1',
-  info: {
-    title: 'Slack API Integration',
-    version: '1.0.0',
-    description: 'API for handling slack messages',
-    contact: { name: 'API Support', email: 'support@microfox.com' },
-  },
-  servers: [{ url: `https://api.microfox.com/c/2121b4fc-e905-4d75-8ec9-b3bb8088285e`, description: 'Production server' }],
-  paths: Object.fromEntries(
-    Object.entries(docsMap).map(([path, doc]) => [`/${path}`, { post: doc }])
-  ),
-};
-
-export const wrapperHandler = async (
+export const handler = async (
   event: APIGatewayProxyEvent
 ): Promise<APIGatewayProxyResult> => {
-  const { path, httpMethod } = event;
+  try {
+    const path = event.path?.split("/").filter(Boolean).pop(); // extract function name from path
+    const sdkFunction = sdkFunctionMap[path || ""];
 
-  // Serve docs
-  if (path === '/docs.json' && httpMethod === 'GET') {
+    if (!sdkFunction) {
+      return {
+        statusCode: 404,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ error: `No function found for path: ${path}` }),
+      };
+    }
+
+    const body = event.body ? JSON.parse(event.body) : {};
+
+    const result = await sdkFunction(body);
+
     return {
       statusCode: 200,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Credentials': true,
-      },
-      body: JSON.stringify(apiDocs, null, 2),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(result),
+    };
+  } catch (error) {
+    console.error("Wrapper function error:", error);
+    return {
+      statusCode: 500,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        error: error instanceof Error ? error.message : "Unknown error",
+      }),
     };
   }
-
-  // Execute function
-  if (path.startsWith('/execute') && httpMethod === 'POST') {
-    const pathParts = path.split('/');
-    const functionName = pathParts[1];
-    console.log(functionName);
-    const handler = handlers[functionName];
-    if (!handler) {
-      return { statusCode: 400, body: JSON.stringify({ error: 'Unknown function' }) };
-    }
-    return handler(event);
-  }
-
-  return { statusCode: 404, body: 'Not found' };
 };

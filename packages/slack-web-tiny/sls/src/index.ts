@@ -38,8 +38,6 @@ export const handler = async (event: any): Promise<any> => {
   }
 
   const data = Buffer.from(encoded, 'base64');
-
-  const data = Buffer.from(encoded, 'base64');
   const iv = data.slice(0, 12);
   const authTag = data.slice(12, 28);
   const ciphertext = data.slice(28);

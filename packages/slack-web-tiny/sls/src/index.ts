@@ -11,11 +11,33 @@ const KEY = Buffer.from(ENCRYPTION_KEY, 'base64');
 
 export const handler = async (event: any): Promise<any> => {
   console.log("event asfasf", event)
-  // Read and decrypt header
-  const encoded = event.headers['client-env-variables'] || event.headers['Client-Env-Variables'];
-  if (!encoded) {
-    return { statusCode: 400, body: JSON.stringify({ error: 'Missing env header' }) };
+
+  // Extract the functionName from the path: /{functionName}
+  const segments = event.path.split("/").filter(Boolean);
+  const functionName = segments[segments.length - 1]!;
+
+  if (functionName === "openapi.json") {
+    const openapi = JSON.parse(require("fs").readFileSync("openapi.json", "utf8"));
+    return {
+      statusCode: 200,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(openapi),
+    };
   }
+
+  // Read and decrypt header
+  // const encoded = event.headers['client-env-variables'] || event.headers['Client-Env-Variables'];
+  // if (!encoded) {
+  //   return { statusCode: 400, body: JSON.stringify({ error: 'Missing env header' }) };
+  // }
+
+  // Read and decrypt header from query parameters instead of headers
+  const encoded = event.queryStringParameters?.['client-env-variables']
+  if (!encoded) {
+    return { statusCode: 400, body: JSON.stringify({ error: 'Missing env in query parameters' }) };
+  }
+
+  const data = Buffer.from(encoded, 'base64');
 
   const data = Buffer.from(encoded, 'base64');
   const iv = data.slice(0, 12);
@@ -40,19 +62,6 @@ export const handler = async (event: any): Promise<any> => {
     uploadFile: slackSDK.uploadFile,
   };
 
-  // Extract the functionName from the path: /{functionName}
-  const segments = event.path.split("/").filter(Boolean);
-  const functionName = segments[segments.length - 1]!;
-
-  if (functionName === "openapi.json") {
-    const openapi = JSON.parse(require("fs").readFileSync("openapi.json", "utf8"));
-    return {
-      statusCode: 200,
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(openapi),
-    };
-  }
-  
   const fn = sdkMap[functionName];
 
   if (!fn) {

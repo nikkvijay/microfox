@@ -10,6 +10,7 @@ if (!ENCRYPTION_KEY) throw new Error('ENCRYPTION_KEY missing');
 const KEY = Buffer.from(ENCRYPTION_KEY, 'base64');
 
 export const handler = async (event: any): Promise<any> => {
+  console.log("event asfasf", event)
   // Read and decrypt header
   const encoded = event.headers['client-env-variables'] || event.headers['Client-Env-Variables'];
   if (!encoded) {

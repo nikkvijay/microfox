@@ -2,27 +2,24 @@ import { createSlackSDK } from '@microfox/slack-web-tiny';
 import crypto from 'crypto';
 import dotenv from 'dotenv';
 import fs from 'fs';
+import openapi from './openapi.json';
+import { loadEnvFromQuery } from './utils/env';
 
 dotenv.config(); // for any local vars
 
-// Ensure same ENCRYPTION_KEY is set locally
-const ENCRYPTION_KEY = process.env.ENCRYPTION_KEY;
-if (!ENCRYPTION_KEY) throw new Error('ENCRYPTION_KEY missing');
-const KEY = Buffer.from(ENCRYPTION_KEY, 'base64');
-
 export const handler = async (event: any): Promise<any> => {
-  console.log("event xdfxhfh", event)
-
   // Extract the functionName from the path: /{functionName}
+  console.log("event", event)
   const segments = event.path.split("/").filter(Boolean);
-  const functionName = segments[segments.length - 1]!;
+  const functionName = segments[segments.length - 1]!.split("?")[0];
   console.log("functionName", functionName)
-
-  // Read and decrypt header
-  // const encoded = event.headers['client-env-variables'] || event.headers['Client-Env-Variables'];
-  // if (!encoded) {
-  //   return { statusCode: 400, body: JSON.stringify({ error: 'Missing env header' }) };
-  // }
+  if (functionName === "docs.json") {
+    return {
+      statusCode: 200,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(openapi),
+    };
+  }
 
   // Read and decrypt header from query parameters instead of headers
   const encoded = event.queryStringParameters?.['client-env-variables']
@@ -30,26 +27,7 @@ export const handler = async (event: any): Promise<any> => {
     return { statusCode: 400, body: JSON.stringify({ error: 'Missing env in query parameters' }) };
   }
 
-  // Convert URL-safe Base64 to standard Base64 by replacing URL-safe chars
-  const urlSafeEncoded = encoded.replace(/-/g, '+').replace(/_/g, '/');
-  
-  // Handle padding
-  let paddedEncoded = urlSafeEncoded;
-  const mod4 = urlSafeEncoded.length % 4;
-  if (mod4) {
-    paddedEncoded += '='.repeat(4 - mod4);
-  }
-
-  const data = Buffer.from(paddedEncoded, 'base64');
-  const iv = data.slice(0, 12);
-  const authTag = data.slice(12, 28);
-  const ciphertext = data.slice(28);
-
-  const decipher = crypto.createDecipheriv('aes-256-gcm', KEY, iv);
-  decipher.setAuthTag(authTag);
-  const decrypted = Buffer.concat([decipher.update(ciphertext), decipher.final()]);
-  const envVars: Record<string, string> = JSON.parse(decrypted.toString('utf8'));
-  console.log("envVars", envVars)
+  const envVars = loadEnvFromQuery(encoded);
 
   // Initialize Slack SDK with decrypted token
   const slackSDK = createSlackSDK({

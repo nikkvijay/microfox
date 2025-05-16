@@ -3,16 +3,16 @@ import path from 'path';
 import { z } from 'zod';
 import 'dotenv/config';
 import { generateText, generateObject, tool } from 'ai';
-import { models } from './ai/models';
+import { models } from '../../ai/models';
 import dedent from 'dedent';
-import { generateDocs } from './genDocs';
+import { generateDocs } from '../docfox/genDocs';
 import {
   extractLinks,
   analyzeLinks,
   extractContentFromUrls,
-} from './utils/webScraper';
-import { logUsage } from './ai/usage/usageLogger';
-import { PackageFoxRequest } from './process-issue';
+} from '../../utils/webScraper';
+import { logUsage } from '../../ai/usage/usageLogger';
+import { PackageFoxRequest } from '../../process-issue';
 
 // Schema for OAuth package generation arguments
 const GenerateOAuthPackageArgsSchema = z.object({

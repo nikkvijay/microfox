@@ -25,7 +25,8 @@
     "path": "/README.md",
     "title": "@slack/web-api",
     "functionalities": [],
-    "description": "The full README for the package"
+    "description": "The full README for the package",
+    "all_readmes": []
   },
   "constructors": [
     {
@@ -110,5 +111,6 @@
       "required": true
     }
   ],
-  "extraInfo": []
+  "extraInfo": [],
+  "platformType": "communication"
 }

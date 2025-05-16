@@ -176,5 +176,6 @@
   ],
   "extraInfo": [
     "Use the `createGoogleSheetsSdk` constructor to create a new client."
-  ]
+  ],
+  "platformType": "tool"
 }

@@ -209,5 +209,6 @@
     "This SDK requires the following OAuth 2.0 scopes: https://www.googleapis.com/auth/webmasters and https://www.googleapis.com/auth/webmasters.readonly",
     "Make sure to handle token refresh when the access token expires. You can use the refreshAccessToken method provided by the SDK.",
     "The Google Search Console API has usage quotas and limits. Please refer to the official documentation for the most up-to-date information on rate limits: https://developers.google.com/webmaster-tools/search-console-api-original/v3/limits"
-  ]
+  ],
+  "platformType": "tool"
 }

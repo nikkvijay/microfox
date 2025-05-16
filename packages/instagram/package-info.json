@@ -260,5 +260,6 @@
     "- The oEmbed endpoint requires a separate app access token or client access token",
     "",
     "For more detailed information, refer to the official Instagram Graph API documentation: https://developers.facebook.com/docs/instagram-api/"
-  ]
+  ],
+  "platformType": "communication"
 }

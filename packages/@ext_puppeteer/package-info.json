@@ -20,9 +20,11 @@
     "path": "/README.md",
     "title": "puppeteer",
     "functionalities": [],
-    "description": "The full README for the package"
+    "description": "The full README for the package",
+    "all_readmes": []
   },
   "constructors": [],
   "keysInfo": [],
-  "extraInfo": []
+  "extraInfo": [],
+  "platformType": "tool"
 }

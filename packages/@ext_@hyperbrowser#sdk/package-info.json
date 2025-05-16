@@ -92,5 +92,6 @@
   "extraInfo": [],
   "keyInstructions": {
     "link": "https://docs.hyperbrowser.ai/agents"
-  }
+  },
+  "platformType": "agent"
 }

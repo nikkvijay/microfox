@@ -99,5 +99,6 @@
   "extraInfo": [
     "Use the `createSlackSDK` constructor to create a new Slack Web Tiny client.",
     "The SDK supports both header and query-based authentication methods."
-  ]
+  ],
+  "platformType": "communication"
 }

@@ -189,6 +189,7 @@ async function createPackageInfo(packageJson: any, readme: string) {
     name: packageName,
     title: packageJson.name || 'Unknown Package',
     description: packageJson.description || 'No description available',
+    platformType: 'tool',
     path: `packages/${directoryName}`,
     dependencies: packageJson.dependencies
       ? Object.keys(packageJson.dependencies)

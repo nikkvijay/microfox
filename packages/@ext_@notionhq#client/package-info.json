@@ -31,7 +31,8 @@
       "comments.list",
       "search"
     ],
-    "description": "The full README for the package"
+    "description": "The full README for the package",
+    "all_readmes": []
   },
   "constructors": [
     {
@@ -67,5 +68,6 @@
     "The SDK supports all Notion API endpoints including pages, databases, blocks, and users.",
     "Full TypeScript support with comprehensive type definitions.",
     "Includes support for OAuth token management and introspection."
-  ]
+  ],
+  "platformType": "tool"
 }

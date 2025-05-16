@@ -172,5 +172,6 @@
     "  - Monitor the X-Ratelimit headers in API responses for current limits and usage",
     "",
     "For more detailed information, refer to the Reddit API documentation: https://www.reddit.com/dev/api/oauth"
-  ]
+  ],
+  "platformType": "communication"
 }

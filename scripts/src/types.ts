@@ -165,8 +165,9 @@ export const PackageInfo = z
       .describe('The name of the package - @slack/web-api or @microfox/slack'),
     title: z.string().describe('Display name of the package'),
     platformType: z
-      .enum(['communication', 'tool', 'agent'])
-      .default('communication'),
+      .enum(['communication', 'tool', 'agent', 'internal'])
+      .default('communication')
+      .describe('The platform type of the package'),
     authEndpoint: z.string().optional(),
     authType: z.enum(['oauth2', 'apikey', 'none']).optional(),
     oauth2Scopes: z.array(z.string()).optional(),

@@ -4,10 +4,10 @@ import fs from 'fs';
 import path from 'path';
 import { promisify } from 'util';
 import { generateObject, generateText } from 'ai';
-import { models } from './ai/models';
-import { logUsage } from './ai/usage/usageLogger';
-import { updateDocReport } from './octokit/commentReports';
-import { scrapeUrl, extractLinks, analyzeLinks } from './utils/webScraper';
+import { models } from '../../ai/models';
+import { logUsage } from '../../ai/usage/usageLogger';
+import { updateDocReport } from '../../octokit/commentReports';
+import { scrapeUrl, extractLinks, analyzeLinks } from '../../utils/webScraper';
 import { z } from 'zod';
 
 const execAsync = promisify(exec);

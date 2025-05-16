@@ -1,0 +1,160 @@
+{
+  "name": "@microfox/fillout-oauth",
+  "title": "Microfox Fillout OAuth",
+  "description": "TypeScript OAuth package simplifying authorization and access token management for Fillout.",
+  "platformType": "internal",
+  "path": "packages/fillout-oauth",
+  "dependencies": [
+    "zod"
+  ],
+  "status": "stable",
+  "authEndpoint": "/connect/fillout",
+  "oauth2Scopes": [],
+  "documentation": "https://www.npmjs.com/package/@microfox/fillout-oauth",
+  "icon": "https://raw.githubusercontent.com/microfox-ai/microfox/refs/heads/main/logos/fillout.svg",
+  "readme_map": {
+    "title": "Microfox Fillout OAuth",
+    "description": "The full README for the Microfox Fillout OAuth",
+    "path": "https://github.com/microfox-ai/microfox/blob/main/packages/fillout-oauth/README.md",
+    "functionalities": [
+      "FilloutOAuthSdk",
+      "getAuthorizationUrl",
+      "getAccessToken",
+      "validateAccessToken"
+    ],
+    "all_readmes": [
+      {
+        "path": "https://github.com/microfox-ai/microfox/blob/main/packages/fillout-oauth/docs/FilloutOAuthSdk.md",
+        "type": "constructor",
+        "extension": "md",
+        "functionality": "FilloutOAuthSdk",
+        "description": "Initializes a new instance of the FilloutOAuthSdk."
+      },
+      {
+        "path": "https://github.com/microfox-ai/microfox/blob/main/packages/fillout-oauth/docs/getAuthorizationUrl.md",
+        "type": "functionality",
+        "extension": "md",
+        "functionality": "getAuthorizationUrl",
+        "description": "Generates the authorization URL for the OAuth flow."
+      },
+      {
+        "path": "https://github.com/microfox-ai/microfox/blob/main/packages/fillout-oauth/docs/getAccessToken.md",
+        "type": "functionality",
+        "extension": "md",
+        "functionality": "getAccessToken",
+        "description": "Exchanges an authorization code for an access token."
+      },
+      {
+        "path": "https://github.com/microfox-ai/microfox/blob/main/packages/fillout-oauth/docs/validateAccessToken.md",
+        "type": "functionality",
+        "extension": "md",
+        "functionality": "validateAccessToken",
+        "description": "Validates the access token by making a request to the Fillout API."
+      }
+    ]
+  },
+  "constructors": [
+    {
+      "name": "FilloutOAuthSdk",
+      "description": "Create a new Microfox Fillout OAuth client through which you can interact with the API",
+      "auth": "oauth2",
+      "authSdk": "@microfox/fillout-oauth",
+      "authEndpoint": "/connect/fillout",
+      "requiredKeys": [],
+      "internalKeys": [
+        {
+          "key": "FILLOUT_CLIENT_ID",
+          "displayName": "Fillout Client ID",
+          "description": "The client ID for your Fillout application.",
+          "required": true
+        },
+        {
+          "key": "FILLOUT_CLIENT_SECRET",
+          "displayName": "Fillout Client Secret",
+          "description": "The client secret for your Fillout application.",
+          "required": true
+        },
+        {
+          "key": "FILLOUT_REDIRECT_URI",
+          "displayName": "Fillout Redirect URI",
+          "description": "The redirect URI for your Fillout application.",
+          "required": true
+        }
+      ],
+      "functionalities": [
+        "getAuthorizationUrl",
+        "getAccessToken",
+        "validateAccessToken"
+      ]
+    }
+  ],
+  "keysInfo": [
+    {
+      "key": "FILLOUT_CLIENT_ID",
+      "constructors": [
+        "FilloutOAuthSdk"
+      ],
+      "description": "The client ID for your Fillout application.",
+      "required": true
+    },
+    {
+      "key": "FILLOUT_CLIENT_SECRET",
+      "constructors": [
+        "FilloutOAuthSdk"
+      ],
+      "description": "The client secret for your Fillout application.",
+      "required": true
+    },
+    {
+      "key": "FILLOUT_REDIRECT_URI",
+      "constructors": [
+        "FilloutOAuthSdk"
+      ],
+      "description": "The redirect URI for your Fillout application.",
+      "required": true
+    }
+  ],
+  "extraInfo": [
+    "To obtain OAuth credentials for Fillout:",
+    "1. Sign up for a Fillout account at https://www.fillout.com/",
+    "2. Navigate to the developer settings in your Fillout account",
+    "3. Create a new application to receive your client ID and client secret",
+    "4. Make sure to register your redirect URI in the application settings",
+    "",
+    "Environment variables:",
+    "- FILLOUT_CLIENT_ID: Your Fillout application client ID",
+    "- FILLOUT_CLIENT_SECRET: Your Fillout application client secret",
+    "- FILLOUT_REDIRECT_URI: Your registered redirect URI",
+    "",
+    "To use this package:",
+    "1. Install the package: npm install @microfox/fillout-oauth",
+    "2. Import and initialize the SDK:",
+    "   import { createFilloutOAuth } from '@microfox/fillout-oauth';",
+    "   const filloutOAuth = createFilloutOAuth({",
+    "     clientId: process.env.FILLOUT_CLIENT_ID!,",
+    "     clientSecret: process.env.FILLOUT_CLIENT_SECRET!,",
+    "     redirectUri: process.env.FILLOUT_REDIRECT_URI!",
+    "   });",
+    "3. Generate the authorization URL:",
+    "   const authUrl = filloutOAuth.getAuthorizationUrl();",
+    "4. After the user authorizes, exchange the code for an access token:",
+    "   const tokenResponse = await filloutOAuth.getAccessToken({ code: 'authorization_code' });",
+    "",
+    "Important notes:",
+    "- Always use HTTPS for all communication with Fillout servers",
+    "- Keep your client secret secure and never expose it in client-side code",
+    "- Use the state parameter in getAuthorizationUrl for added security against CSRF attacks",
+    "- The package doesn't handle token storage; implement secure storage in your application",
+    "- Fillout's documentation doesn't mention token expiration or refresh mechanisms; implement periodic reauthorization if needed",
+    "- Rate limits and other API constraints are not specified in the provided documentation; refer to Fillout's API documentation for more details"
+  ],
+  "keyInstructions": {
+    "link": "https://www.fillout.com/help/oauth-applications"
+  },
+  "devDependencies": [
+    "@microfox/tsconfig",
+    "@types/node",
+    "tsup",
+    "typescript"
+  ]
+}

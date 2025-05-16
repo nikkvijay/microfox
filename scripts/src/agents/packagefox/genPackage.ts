@@ -4,22 +4,22 @@ import 'dotenv/config';
 import fs from 'fs';
 import path from 'path';
 import { z } from 'zod';
-import { models } from './ai/models';
-import { logUsage } from './ai/usage/usageLogger';
+import { models } from '../../ai/models';
+import { logUsage } from '../../ai/usage/usageLogger';
 import { fixBuildIssues } from './fixBuildIssues';
-import { generateDocs } from './genDocs';
+import { generateDocs } from '../docfox/genDocs';
 import {
   updateCodeGenReport,
   updateResearchReport,
-} from './octokit/commentReports';
-import { PackageFoxRequest } from './process-issue';
-import { PackageInfo } from './types';
-import { inMemoryStore } from './utils/InMemoryStore';
+} from '../../octokit/commentReports';
+import { PackageFoxRequest } from '../../process-issue';
+import { PackageInfo } from '../../types';
+import { inMemoryStore } from '../../utils/InMemoryStore';
 import {
   analyzeLinks,
   extractContentFromUrls,
   extractLinks,
-} from './utils/webScraper';
+} from '../../utils/webScraper';
 
 // Schema for SDK generation arguments
 const GenerateSDKArgsSchema = z.object({

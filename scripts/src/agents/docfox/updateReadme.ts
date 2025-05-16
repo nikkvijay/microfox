@@ -5,7 +5,7 @@ import fs from 'fs';
 import path from 'path';
 import { generateText } from 'ai';
 import 'dotenv/config';
-import { models } from './ai/models';
+import { models } from '../../ai/models';
 import dedent from 'dedent';
 
 // Types

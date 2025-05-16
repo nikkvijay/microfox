@@ -2,13 +2,13 @@ import fs from 'fs';
 import path from 'path';
 import { z } from 'zod';
 import { generateText, generateObject, tool } from 'ai'; // Added generateObject, tool
-import { models } from './ai/models';
+import { models } from '../../ai/models';
 import dedent from 'dedent';
 import * as diff from 'diff'; // Import the diff library
 import { error } from 'console';
-import { prCommentor } from './octokit/octokit';
-import { updateBuildReport } from './octokit/commentReports';
-import { logUsage } from './ai/usage/usageLogger';
+import { prCommentor } from '../../octokit/octokit';
+import { updateBuildReport } from '../../octokit/commentReports';
+import { logUsage } from '../../ai/usage/usageLogger';
 
 // Schema for the .foxes file content
 const FoxFileSchema = z.object({

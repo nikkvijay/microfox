@@ -5,10 +5,10 @@ import fs from 'fs';
 import path from 'path';
 import { promisify } from 'util';
 import { z } from 'zod';
-import { models } from './ai/models';
-import { logUsage } from './ai/usage/usageLogger';
-import { updateDocReport } from './octokit/commentReports';
-import { inMemoryStore } from './utils/InMemoryStore';
+import { models } from '../../ai/models';
+import { logUsage } from '../../ai/usage/usageLogger';
+import { updateDocReport } from '../../octokit/commentReports';
+import { inMemoryStore } from '../../utils/InMemoryStore';
 
 const execAsync = promisify(exec);
 

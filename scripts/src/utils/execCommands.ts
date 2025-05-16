@@ -2,6 +2,7 @@ import { exec } from 'child_process';
 import { promisify } from 'util';
 import fs from 'fs';
 import path from 'path';
+import { getProjectRoot } from './getProjectRoot';
 
 const execAsync = promisify(exec);
 
@@ -9,7 +10,7 @@ const execAsync = promisify(exec);
  * Build the package
  */
 export async function buildPackage(packageDir: string): Promise<boolean> {
-  const originalDir = process.cwd().replace('/scripts', ''); // Store original CWD (likely monorepo root)
+  const originalDir = getProjectRoot(); // Store original CWD (likely monorepo root)
   try {
     // Change to package directory for install
     process.chdir(packageDir);

@@ -20,7 +20,8 @@
     "embed:docs": "ts-node src/embeddings/embedDocs.ts",
     "embed:query": "ts-node src/embeddings/queryDocs.ts",
     "workflow:packagefox": "ts-node src/handleWorkflow.ts",
-    "deploy:sls": "ts-node src/serverless/deploy/ci.ts"
+    "deploy:sls": "ts-node src/serverless/deploy/ci.ts",
+    "api:query": "ts-node src/embeddings/queryApis.ts"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^1.2.10",

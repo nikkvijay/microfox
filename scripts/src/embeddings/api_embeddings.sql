@@ -47,3 +47,73 @@ CREATE INDEX IF NOT EXISTS idx_api_embeddings_public
 
 CREATE INDEX IF NOT EXISTS idx_api_embeddings_stage
   ON api_embeddings(stage);
+
+-- Function to search API embeddings by project ID
+CREATE OR REPLACE FUNCTION match_apis_by_project(
+    query_embedding VECTOR,
+    project_id TEXT,
+    k INT DEFAULT 5,
+    stage_filter deployment_stage DEFAULT NULL
+)
+RETURNS TABLE (
+    id UUID,
+    bot_project_id TEXT,
+    base_url TEXT,
+    endpoint_path TEXT,
+    http_method TEXT,
+    doc_text TEXT,
+    stage deployment_stage,
+    similarity FLOAT
+)
+LANGUAGE SQL STABLE
+AS $$
+    SELECT
+      id,
+      bot_project_id,
+      base_url,
+      endpoint_path,
+      http_method,
+      doc_text,
+      stage,
+      1 - (embedding <#> query_embedding) AS similarity
+    FROM api_embeddings
+    WHERE bot_project_id = project_id
+      AND (stage_filter IS NULL OR stage = stage_filter)
+    ORDER BY embedding <#> query_embedding
+    LIMIT k;
+$$;
+
+-- Function for global API search
+CREATE OR REPLACE FUNCTION match_apis(
+    query_embedding VECTOR,
+    k INT DEFAULT 5,
+    stage_filter deployment_stage DEFAULT NULL,
+    public_only BOOLEAN DEFAULT FALSE
+)
+RETURNS TABLE (
+    id UUID,
+    bot_project_id TEXT,
+    base_url TEXT,
+    endpoint_path TEXT,
+    http_method TEXT,
+    doc_text TEXT,
+    stage deployment_stage,
+    similarity FLOAT
+)
+LANGUAGE SQL STABLE
+AS $$
+    SELECT
+      id,
+      bot_project_id,
+      base_url,
+      endpoint_path,
+      http_method,
+      doc_text,
+      stage,
+      1 - (embedding <#> query_embedding) AS similarity
+    FROM api_embeddings
+    WHERE (stage_filter IS NULL OR stage = stage_filter)
+      AND (NOT public_only OR is_public = TRUE)
+    ORDER BY embedding <#> query_embedding
+    LIMIT k;
+$$;

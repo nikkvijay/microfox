@@ -8,26 +8,6 @@ import {
 } from '../slack-sdk';
 import { z } from 'zod';
 
-// Mock the rest-sdk module to prevent actual API calls
-vi.mock('@microfox/rest-sdk', () => {
-  // Create a mock json function that always throws an error
-  const mockJson = vi
-    .fn()
-    .mockRejectedValue(new Error('API Error: Invalid token'));
-
-  // Create a mock post function that returns an object with json method
-  const mockPost = vi.fn().mockReturnValue({
-    json: mockJson,
-  });
-
-  // Return a mock createRestSDK function
-  return {
-    createRestSDK: vi.fn().mockReturnValue({
-      post: mockPost,
-    }),
-  };
-});
-
 // Spy on console.error to prevent showing errors during tests
 const originalConsoleError = console.error;
 console.error = vi.fn();

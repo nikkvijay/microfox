@@ -1,7 +1,6 @@
 import { createSlackSDK } from '@microfox/slack-web-tiny';
 import dotenv from 'dotenv';
-import { loadEnvFromQuery } from './utils/env';
-import { getOpenApiSchema } from './utils/openapi';
+import { loadEnvFromQuery } from './utils/env.js';
 
 dotenv.config(); // for any local vars
 
@@ -11,14 +10,6 @@ export const handler = async (event: any): Promise<any> => {
   const segments = event.path.split("/").filter(Boolean);
   const functionName = segments[segments.length - 1]!.split("?")[0];
   console.log("functionName", functionName)
-  if (functionName === "docs.json") {
-    const openApiSchema = getOpenApiSchema();
-    return {
-      statusCode: 200,
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(openApiSchema),
-    };
-  }
 
   // Read and decrypt header from query parameters instead of headers
   const encoded = event.queryStringParameters?.['client-env-variables']

@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-import { decodeBase64Url, decryptAesGcm } from './encryption';
+import { decodeBase64Url, decryptAesGcm } from './encryption.js';
 
 dotenv.config();
 

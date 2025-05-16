@@ -151,6 +151,7 @@ function createInitialPackageInfo(
     name: packageName,
     title,
     description,
+    platformType: 'internal',
     path: `packages/${packageName.replace('@microfox/', '')}`,
     dependencies: ['zod'],
     status: 'stable',

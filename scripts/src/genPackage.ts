@@ -217,6 +217,7 @@ function createInitialPackageInfo(
     name: packageName,
     title,
     description,
+    platformType: 'tool',
     path: `packages/${packageName.replace('@microfox/', '')}`,
     dependencies: ['zod', authSdk].filter(Boolean),
     status: 'semiStable',

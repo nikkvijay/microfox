@@ -16,6 +16,7 @@ To use this package, you need to set the following environment variables:
 - `SLACK_CLIENT_SECRET`: Your Slack app's Client Secret. ** (Required)**
 - `SLACK_REDIRECT_URI`: The redirect URI you configured for your Slack app. ** (Required)**
 - `SCOPES`: The scopes for your Slack app. ** (Required)**
+- `USER_SCOPES`: The user scopes for your slack app.
 
 ## API Reference
 
@@ -26,4 +27,3 @@ For detailed documentation on the constructor and all available functions, pleas
 - [exchangeCodeForToken](./docs/exchangeCodeForToken.md)
 - [validateToken](./docs/validateToken.md)
 - [revokeToken](./docs/revokeToken.md)
-

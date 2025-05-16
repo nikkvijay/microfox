@@ -101,6 +101,13 @@
             "incoming-webhook",
             "commands"
           ]
+        },
+        {
+          "key": "USER_SCOPES",
+          "displayName": "Slack User Scopes",
+          "description": "The user scopes for your Slack app.",
+          "required": false,
+          "defaultValue": []
         }
       ],
       "functionalities": [

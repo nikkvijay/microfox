@@ -38,7 +38,7 @@ const slackOAuth = new SlackOAuthSdk({
   clientSecret: process.env.SLACK_CLIENT_SECRET!,
   redirectUri: process.env.SLACK_REDIRECT_URI!,
   scopes: process.env.SCOPES,
-  userScopes: ['identity.basic'],
+  userScopes: process.env.USER_SCOPES || ['identity.basic'],
   team: 'T12345678',
   isGovSlack: true,
 });

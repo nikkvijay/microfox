@@ -7,6 +7,7 @@ import { updateBuildReport } from '../../octokit/commentReports';
 import { readUsageData } from '../../ai/usage/readUsageData';
 import { IssueDetails, PackageFoxRequest } from '../../process-issue';
 import { inMemoryStore } from '../../utils/InMemoryStore';
+import { getProjectRoot } from '../../utils/getProjectRoot';
 
 const MAX_RETRIES = 5;
 
@@ -108,10 +109,7 @@ export async function fixBuildIssues(packageName: string) {
   }
 
   const foxlog = fs.readFileSync(
-    path.join(
-      process.cwd()?.replace('/scripts', ''),
-      '.microfox/packagefox-build.json',
-    ),
+    path.join(getProjectRoot(), '.microfox/packagefox-build.json'),
     'utf8',
   );
   if (foxlog) {
@@ -125,7 +123,7 @@ export async function fixBuildIssues(packageName: string) {
     });
     foxlogData.requests = newRequests;
     fs.writeFileSync(
-      path.join(process.cwd(), '../.microfox', 'packagefox-build.json'),
+      path.join(getProjectRoot(), '.microfox/packagefox-build.json'),
       JSON.stringify(foxlogData, null, 2),
     );
   }

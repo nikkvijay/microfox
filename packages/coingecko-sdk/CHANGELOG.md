@@ -1,5 +1,11 @@
 # @microfox/coingecko-sdk
 
+## 1.0.3
+
+### Patch Changes
+
+- 7cd211d: Changes from PR #251: brave
+
 ## 1.0.2
 
 ### Patch Changes

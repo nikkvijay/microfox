@@ -1,5 +1,11 @@
 # @microfox/rest-sdk
 
+## 1.0.5
+
+### Patch Changes
+
+- 7cd211d: Changes from PR #251: brave
+
 ## 1.0.4
 
 ### Patch Changes

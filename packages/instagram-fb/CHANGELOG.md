@@ -1,5 +1,13 @@
 # @microfox/instagram-fb
 
+## 1.1.1
+
+### Patch Changes
+
+- 7cd211d: Changes from PR #251: brave
+- Updated dependencies [7cd211d]
+  - @microfox/instagram-fb-business-oauth@1.0.2
+
 ## 1.1.0
 
 ### Minor Changes

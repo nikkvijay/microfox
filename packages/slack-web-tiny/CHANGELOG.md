@@ -1,5 +1,12 @@
 # @microfox/slack-web-tiny
 
+## 1.2.2
+
+### Patch Changes
+
+- 7cd211d: Changes from PR #251: brave
+- 1d313a1: Changes from PR #253: brave
+
 ## 1.2.1
 
 ### Patch Changes

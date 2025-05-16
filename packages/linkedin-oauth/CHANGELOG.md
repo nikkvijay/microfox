@@ -1,5 +1,11 @@
 # @microfox/linkedin-oauth
 
+## 1.0.6
+
+### Patch Changes
+
+- 7cd211d: Changes from PR #251: brave
+
 ## 1.0.5
 
 ### Patch Changes

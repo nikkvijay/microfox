@@ -1,5 +1,11 @@
 # @microfox/reddit-oauth
 
+## 1.1.4
+
+### Patch Changes
+
+- 7cd211d: Changes from PR #251: brave
+
 ## 1.1.3
 
 ### Patch Changes

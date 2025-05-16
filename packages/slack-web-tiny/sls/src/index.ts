@@ -30,7 +30,17 @@ export const handler = async (event: any): Promise<any> => {
     return { statusCode: 400, body: JSON.stringify({ error: 'Missing env in query parameters' }) };
   }
 
-  const data = Buffer.from(encoded, 'base64');
+  // Convert URL-safe Base64 to standard Base64 by replacing URL-safe chars
+  const urlSafeEncoded = encoded.replace(/-/g, '+').replace(/_/g, '/');
+  
+  // Handle padding
+  let paddedEncoded = urlSafeEncoded;
+  const mod4 = urlSafeEncoded.length % 4;
+  if (mod4) {
+    paddedEncoded += '='.repeat(4 - mod4);
+  }
+
+  const data = Buffer.from(paddedEncoded, 'base64');
   const iv = data.slice(0, 12);
   const authTag = data.slice(12, 28);
   const ciphertext = data.slice(28);
@@ -39,6 +49,7 @@ export const handler = async (event: any): Promise<any> => {
   decipher.setAuthTag(authTag);
   const decrypted = Buffer.concat([decipher.update(ciphertext), decipher.final()]);
   const envVars: Record<string, string> = JSON.parse(decrypted.toString('utf8'));
+  console.log("envVars", envVars)
 
   // Initialize Slack SDK with decrypted token
   const slackSDK = createSlackSDK({

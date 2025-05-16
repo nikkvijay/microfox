@@ -1,0 +1,182 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Microfox AWS SES SDK API",
+    "version": "1.0.0",
+    "description": "AWS Simple Email Service (SES) SDK API for sending emails",
+    "contact": {
+      "name": "Microfox Dev Support",
+      "email": "support@microfox.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.microfox.com/c/aws-ses",
+      "description": "Unified wrapper endpoint"
+    }
+  ],
+  "paths": {
+    "/sendEmail": {
+      "post": {
+        "operationId": "sendEmail",
+        "summary": "Send a single email",
+        "description": "Sends a single email to a specified recipient using the AWS SES service.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "sender": {
+                    "type": "string",
+                    "description": "Email address of the sender (must be verified in AWS SES)"
+                  },
+                  "recipient": {
+                    "type": "string",
+                    "description": "Email address of the recipient"
+                  },
+                  "displayName": {
+                    "type": "string",
+                    "description": "Display name for the sender (e.g., \"John Doe\" <john@example.com>)"
+                  },
+                  "subject": {
+                    "type": "string",
+                    "description": "Subject line of the email"
+                  },
+                  "bodyText": {
+                    "type": "string",
+                    "description": "Plain text version of the email body"
+                  },
+                  "bodyHtml": {
+                    "type": "string",
+                    "description": "HTML version of the email body"
+                  }
+                },
+                "required": ["sender", "recipient", "subject"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Email sent successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "SendEmailResult": {
+                      "type": "object",
+                      "properties": {
+                        "MessageId": {
+                          "type": "string",
+                          "description": "The unique identifier for the sent email"
+                        }
+                      }
+                    },
+                    "ResponseMetadata": {
+                      "type": "object",
+                      "properties": {
+                        "RequestId": {
+                          "type": "string",
+                          "description": "The unique request identifier"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": { "description": "Missing or invalid parameters" },
+          "500": { "description": "Internal server error" }
+        }
+      }
+    },
+    "/sendBulkEmails": {
+      "post": {
+        "operationId": "sendBulkEmails",
+        "summary": "Send multiple emails in parallel",
+        "description": "Sends multiple emails to a list of recipients using the AWS SES service. Emails are sent in parallel for improved performance.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "sender": {
+                    "type": "string",
+                    "description": "Email address of the sender (must be verified in AWS SES)"
+                  },
+                  "recipients": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "List of recipient email addresses"
+                  },
+                  "displayName": {
+                    "type": "string",
+                    "description": "Display name for the sender (e.g., \"John Doe\" <john@example.com>)"
+                  },
+                  "subject": {
+                    "type": "string",
+                    "description": "Subject line of the email"
+                  },
+                  "bodyText": {
+                    "type": "string",
+                    "description": "Plain text version of the email body"
+                  },
+                  "bodyHtml": {
+                    "type": "string",
+                    "description": "HTML version of the email body"
+                  }
+                },
+                "required": ["sender", "recipients", "subject"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Emails sent successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "SendEmailResult": {
+                        "type": "object",
+                        "properties": {
+                          "MessageId": {
+                            "type": "string",
+                            "description": "The unique identifier for the sent email"
+                          }
+                        }
+                      },
+                      "ResponseMetadata": {
+                        "type": "object",
+                        "properties": {
+                          "RequestId": {
+                            "type": "string",
+                            "description": "The unique request identifier"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": { "description": "Missing or invalid parameters" },
+          "500": { "description": "Internal server error" }
+        }
+      }
+    }
+  }
+}

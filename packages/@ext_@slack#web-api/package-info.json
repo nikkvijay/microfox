@@ -74,9 +74,19 @@
       "requiredKeys": [],
       "internalKeys": [
         {
-          "key": "SLACK_BOT_TOKEN",
-          "displayName": "Slack Bot Token",
-          "description": "The bot token for authenticating with the Slack API."
+          "key": "SLACK_CLIENT_ID",
+          "displayName": "Slack Client ID",
+          "description": "The client ID for Slack OAuth. You can obtain this from your Slack App settings."
+        },
+        {
+          "key": "SLACK_CLIENT_SECRET",
+          "displayName": "Slack Client Secret",
+          "description": "The client secret for Slack OAuth. You can obtain this from your Slack App settings."
+        },
+        {
+          "key": "SLACK_ACCESS_TOKEN",
+          "displayName": "Slack Access Token",
+          "description": "The access token for Slack OAuth. This token is used to authenticate requests to the Slack API."
         },
         {
           "key": "SCOPES",

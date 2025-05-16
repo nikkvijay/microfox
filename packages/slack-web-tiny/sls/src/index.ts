@@ -1,9 +1,7 @@
 import { createSlackSDK } from '@microfox/slack-web-tiny';
-import crypto from 'crypto';
 import dotenv from 'dotenv';
-import fs from 'fs';
-import openapi from './openapi.json';
 import { loadEnvFromQuery } from './utils/env';
+import { getOpenApiSchema } from './utils/openapi';
 
 dotenv.config(); // for any local vars
 
@@ -14,10 +12,11 @@ export const handler = async (event: any): Promise<any> => {
   const functionName = segments[segments.length - 1]!.split("?")[0];
   console.log("functionName", functionName)
   if (functionName === "docs.json") {
+    const openApiSchema = getOpenApiSchema();
     return {
       statusCode: 200,
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(openapi),
+      body: JSON.stringify(openApiSchema),
     };
   }
 

@@ -83,7 +83,7 @@ async function deployPackageSls(packagePath: string): Promise<boolean> {
 
     if (baseUrl) {
       console.log(`Deployed base URL: ${baseUrl}`);
-      let docsData: OpenAPIDoc = JSON.parse(fs.readFileSync(path.join(slsPath, 'src', 'openapi.json'), 'utf8'));
+      let docsData: OpenAPIDoc = JSON.parse(fs.readFileSync(path.join(slsPath, 'openapi.json'), 'utf8'));
 
       const functionMetadata: FunctionMetadata = {
         name: `public-${packageName}-${STAGE}-api`,

@@ -82,7 +82,7 @@ Our automated SDK creation system that:
 
 <!-- SEMI_STABLE_PACKAGES_TABLE_END -->
 
-### 🤝 Contributing
+### [🤝 Contributing](CONTRIBUTING.md)
 
 Microfox represents a new paradigm in software development:
 
@@ -92,9 +92,7 @@ Here's how you can help:
 2. **_SDK Design_** Good SDKs are built on top of good design standards (create a new vision for a different kind of packages)
 3. **Request New SDKs**: Create an issue with the API documentation URL (to autobuild start issue title with `packagefox: TITLE`)
 4. **Report Issues**: Help us improve by reporting bugs or suggesting improvements (to autofix the issue title with `packagefox: TITLE`)
-5. Fork the repository
-6. Create your feature branch (`git checkout -b dev/amazing-feature`)
-7. Commit your changes (`git commit -m 'feat: add amazing feature'`)
-8. Open a Forked Pull Request to staging branch
+
+check the above contributing link for more specific information.
 
 Join us in building the future of software development!

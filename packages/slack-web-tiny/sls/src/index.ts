@@ -11,7 +11,7 @@ if (!ENCRYPTION_KEY) throw new Error('ENCRYPTION_KEY missing');
 const KEY = Buffer.from(ENCRYPTION_KEY, 'base64');
 
 export const handler = async (event: any): Promise<any> => {
-  console.log("event sdfsf", event)
+  console.log("event xdfxhfh", event)
 
   // Extract the functionName from the path: /{functionName}
   const segments = event.path.split("/").filter(Boolean);

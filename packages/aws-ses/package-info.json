@@ -89,5 +89,6 @@
   "extraInfo": [
     "Use the `createSESClient` constructor to create a new AWS SES client.",
     "All email addresses must be verified in AWS SES before sending."
-  ]
+  ],
+  "platformType": "communication"
 }

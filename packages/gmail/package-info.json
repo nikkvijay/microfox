@@ -223,5 +223,6 @@
     "Rate limits: Be aware that the Gmail API has usage quotas and limits. For most users, this is 1,000,000,000 queries per day. You can check your specific quota in the Google Cloud Console.",
     "",
     "For more detailed information on using the Gmail API, refer to the official documentation: https://developers.google.com/gmail/api/guides"
-  ]
+  ],
+  "platformType": "communication"
 }

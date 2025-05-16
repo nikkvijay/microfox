@@ -183,5 +183,11 @@
   "keyInstructions": {
     "link": "https://api.slack.com/authentication/oauth-v2"
   },
-  "devDependencies": ["@microfox/tsconfig", "@types/node", "tsup", "typescript"]
+  "devDependencies": [
+    "@microfox/tsconfig",
+    "@types/node",
+    "tsup",
+    "typescript"
+  ],
+  "platformType": "communication"
 }

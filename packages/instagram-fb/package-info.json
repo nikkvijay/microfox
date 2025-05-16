@@ -242,5 +242,6 @@
     "- oEmbed: Up to 5 million requests per 24 hours for app tokens, significantly lower for client tokens",
     "Ensure your application respects these rate limits to avoid being blocked by the API.",
     "For more detailed information about the Instagram Graph API, visit: https://developers.facebook.com/docs/instagram-api/"
-  ]
+  ],
+  "platformType": "communication"
 }

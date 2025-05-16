@@ -3,7 +3,10 @@
   "title": "Microfox Discord SDK",
   "description": "A lightweight, type-safe SDK for interacting with the Discord API v10",
   "path": "packages/discord",
-  "dependencies": ["@microfox/rest-sdk", "zod"],
+  "dependencies": [
+    "@microfox/rest-sdk",
+    "zod"
+  ],
   "authType": "apikey",
   "status": "semiStable",
   "authEndpoint": "/connect/discord",
@@ -326,7 +329,9 @@
   "keysInfo": [
     {
       "key": "DISCORD_BOT_TOKEN",
-      "constructors": ["createDiscordSdk"],
+      "constructors": [
+        "createDiscordSdk"
+      ],
       "description": "The Discord bot token is required to authenticate with the Discord API. You can obtain this token by creating a bot application on the Discord Developer Portal.",
       "required": true
     }
@@ -336,5 +341,6 @@
     "The SDK supports Discord API v10 with comprehensive type safety.",
     "Supports both guild-specific and global slash commands.",
     "Includes full moderation, channel, and role management capabilities."
-  ]
+  ],
+  "platformType": "communication"
 }

@@ -166,5 +166,6 @@
     "tsup",
     "typescript",
     "zod"
-  ]
+  ],
+  "platformType": "tool"
 }

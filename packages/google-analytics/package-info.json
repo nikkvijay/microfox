@@ -306,5 +306,6 @@
     "Always validate and sanitize user inputs before passing them to the API to prevent injection attacks.",
     "Keep your access token secure and refresh it when necessary using the refreshAccessToken method.",
     "Consult the official Google Analytics Data API documentation for the most up-to-date information on endpoints, parameters, and best practices."
-  ]
+  ],
+  "platformType": "tool"
 }

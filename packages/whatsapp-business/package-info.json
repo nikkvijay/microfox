@@ -50,7 +50,8 @@
       "configureConversationalComponents",
       "getConversationalComponents"
     ],
-    "description": "The full README for the WhatsApp Business SDK"
+    "description": "The full README for the WhatsApp Business SDK",
+    "all_readmes": []
   },
   "constructors": [
     {
@@ -195,5 +196,6 @@
     "Use the `WhatsAppBusinessSDK` constructor to create a new WhatsApp Business API client.",
     "The SDK supports sending various types of messages including text, media, and templates.",
     "Make sure to have a verified WhatsApp Business account and the necessary API credentials."
-  ]
+  ],
+  "platformType": "communication"
 }

@@ -324,5 +324,6 @@
   "extraInfo": [],
   "keyInstructions": {
     "link": "https://ai-sdk.dev/docs/reference/ai-sdk-core"
-  }
+  },
+  "platformType": "agent"
 }

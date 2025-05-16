@@ -16,6 +16,7 @@ interface FixResult {
 // Default values for required fields
 const defaultValues = {
   status: 'unstable',
+  platformType: 'communication',
   dependencies: [],
   extraInfo: [],
   constructors: [],

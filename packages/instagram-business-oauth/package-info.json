@@ -13,7 +13,8 @@
     "path": "/README.md",
     "title": "InstagramBusinessOAuth Microfox",
     "functionalities": [],
-    "description": "The full README for the Instagram Business OAuth SDK"
+    "description": "The full README for the Instagram Business OAuth SDK",
+    "all_readmes": []
   },
   "constructors": [
     {
@@ -96,5 +97,6 @@
   "extraInfo": [
     "Use the `InstagramBusinessOAuthSdk` constructor to create a new Instagram Business OAuth client.",
     "The SDK supports OAuth2 authentication for Instagram Business API."
-  ]
+  ],
+  "platformType": "tool"
 }

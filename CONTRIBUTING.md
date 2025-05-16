@@ -4,7 +4,7 @@ First off, thank you for considering contributing to Microfox AI! We appreciate 
 
 ## Project Structure Overview
 
-Microfox AI is a monorepo managed with npm/pnpm workspaces and Turborepo. Key directories include:
+Microfox AI is a monorepo managed with npm workspaces and Turborepo. Key directories include:
 
 - **`packages/`**: Contains all the individual publishable packages. These are typically SDKs, API clients, or core functionalities.
   - Many packages follow a pattern like `service-name` (e.g., `google-sheets`, `slack-web-tiny`) or `service-name-feature` (e.g., `instagram-fb-business-oauth`).
@@ -15,7 +15,7 @@ Microfox AI is a monorepo managed with npm/pnpm workspaces and Turborepo. Key di
   - The primary source code for these scripts is usually within `scripts/src/`.
   - **`scripts/src/agents/`**: This directory houses specialized AI agents. Each subdirectory (e.g., `metafox/`, `docfox/`, `packagefox/`, `testfox/`) corresponds to an agent with a specific focus, such as metadata management, documentation processing, package operations, or test generation. Contributions here could involve improving existing agent logic, adding new capabilities to an agent, or developing entirely new agents.
   - **`scripts/src/embeddings/`**: This directory is responsible for generating and managing embeddings, which are crucial for semantic search and AI understanding of the codebase. It includes scripts for creating embeddings from documentation and API specifications (e.g., `embedDocs.ts`, `queryApis.ts`), Contributions could involve enhancing embedding generation processes, supporting new content types for embeddings, or optimizing embedding storage and retrieval.
-- ## **`.github/`**: Contains GitHub-specific automations, including workflows for CI/CD and issue/PR templates.
+- **`.github/`**: Contains GitHub-specific automations, including workflows for CI/CD and issue/PR templates.
 
 Understanding this structure will help you navigate the codebase and identify where your contributions can fit.
 
@@ -109,14 +109,13 @@ By filtering issues by these labels on the [GitHub Issues page](https://github.c
 1.  **Fork the repository**: Click the "Fork" button on the [Microfox AI GitHub page](https://github.com/THEMOONDEVS/microfox-ai).
 2.  **Clone your fork**: `git clone https://github.com/YOUR_USERNAME/microfox-ai.git`
 3.  **Navigate to the project directory**: `cd microfox-ai`
-4.  **Install dependencies**: We use pnpm as our package manager.
+4.  **Install dependencies**: We use npm as our package manager.
     ```bash
-    npm install -g pnpm # If you don't have pnpm
-    pnpm install
+    npm install
     ```
 5.  **Create a new branch**: `git checkout -b my-feature-branch`
 6.  **Make your changes**: Write your code and add tests!
-7.  **Run tests**: `pnpm test` (or a more specific test command if available for the package you're working on).
+7.  **Run tests**: `npm test` (or a more specific test command if available for the package you're working on).
 8.  **Commit your changes**: `git commit -m "feat: Describe your feature"` (See [Conventional Commits](https://www.conventionalcommits.org/) for commit message guidelines).
 9.  **Push to your branch**: `git push origin my-feature-branch`
 10. **Submit a Pull Request (PR)**: Go to the original Microfox AI repository and click the "New pull request" button.

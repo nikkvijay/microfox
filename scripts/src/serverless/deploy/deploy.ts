@@ -1,16 +1,10 @@
 import { execSync } from 'child_process';
 import * as fs from 'fs';
 import * as path from 'path';
-import { BASE_SERVER_URL, STAGE } from './constants';
-
-interface DocsData {
-  info?: {
-    description?: string;
-    version?: string;
-    title?: string;
-  };
-  [key: string]: any;
-}
+import { STAGE } from './constants';
+import { createClient } from '@supabase/supabase-js';
+import { embed } from '../../embeddings/geminiEmbed';
+import { OpenAPIDoc } from './types';
 
 interface FunctionMetadata {
   name: string;
@@ -23,7 +17,7 @@ interface FunctionMetadata {
     description?: string;
     version?: string;
     title?: string;
-    docs_data?: DocsData;
+    docs_data?: OpenAPIDoc;
     serverless: {
       stage: string;
       output: string;
@@ -89,11 +83,7 @@ async function deployPackageSls(packagePath: string): Promise<boolean> {
 
     if (baseUrl) {
       console.log(`Deployed base URL: ${baseUrl}`);
-      let docsData: DocsData = JSON.parse(fs.readFileSync(path.join(slsPath, 'openapi.json'), 'utf8'));
-
-      if (!BASE_SERVER_URL) {
-        throw new Error('BASE_SERVER_URL is not set');
-      }
+      let docsData: OpenAPIDoc = JSON.parse(fs.readFileSync(path.join(slsPath, 'openapi.json'), 'utf8'));
 
       const functionMetadata: FunctionMetadata = {
         name: `public-${packageName}-${STAGE}-api`,
@@ -114,22 +104,155 @@ async function deployPackageSls(packagePath: string): Promise<boolean> {
         },
       };
 
-      const createResponse = await fetch(`${BASE_SERVER_URL}/api/client-functions/public`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'microfox-api-key': `${process.env.MICROFOX_API_KEY}`,
-        },
-        body: JSON.stringify({ ...functionMetadata }),
-      });
+      const supabase = createClient(
+        process.env.SUPABASE_URL!,
+        process.env.SUPABASE_SERVICE_ROLE_KEY!
+      );
 
-      if (!createResponse.ok) {
-        throw new Error(`Failed to create function metadata: ${createResponse.statusText}`);
+      // Upsert on unique name
+      const { data, error } = await supabase
+        .from('public_deployments')
+        .upsert(functionMetadata, { onConflict: 'name' });
+
+      if (error) {
+        console.error("error", error);
+        return false;
       }
 
-      console.log('Function metadata created successfully');
-    }
+      const results = {
+        success: 0,
+        failed: 0,
+        errors: [] as { path: string, method: string, error: any }[]
+      };
 
+      for (const [path, methods] of Object.entries(docsData.paths)) {
+        console.log(`Processing path: ${path}`);
+        for (const [method, op] of Object.entries(methods)) {
+          try {
+            console.log(`Processing method: ${method}`);
+            // build doc_text
+            let docText = `ENDPOINT_PATH: ${method.toUpperCase()} ${path}\n`;
+            if (op.summary) docText += `SUMMARY: ${op.summary}\n`;
+            if (op.description) docText += `DESCRIPTION: ${op.description}\n`;
+
+            docText += `\nLAMBDA_FUNCTION:\n`;
+            docText += `  Name: ${op.operationId || `${packageName}-${method}${path.replace(/\//g, '-')}`}\n`;
+            docText += `  Path: ${path}\n`;
+            docText += `  Method: ${method}\n`;
+            docText += `  Description: ${op.description}\n`;
+            docText += `  Summary: ${op.summary}\n`;
+            docText += `  Instructions: ${op.instructions}\n`;
+
+            if (op.requestBody?.content?.['application/json']?.schema) {
+              const schema = JSON.stringify(op.requestBody.content['application/json'].schema);
+              docText += `\nREQUEST_SCHEMA: ${schema}\n`;
+            }
+
+            docText += `\nRESPONSES:\n`;
+            for (const [status, resp] of Object.entries(op.responses)) {
+              if (resp?.content?.['application/json']?.schema) {
+                const schema = JSON.stringify(resp.content['application/json'].schema);
+                docText += `  ${status} → ${schema}\n`;
+              }
+            }
+
+            // embed and upsert
+            let embedding;
+            try {
+              embedding = await embed(docText);
+              if (!embedding) {
+                console.error(`Failed to generate embedding for ${method.toUpperCase()} ${path}`);
+                results.failed++;
+                results.errors.push({ path, method, error: 'Failed to generate embedding' });
+                continue;
+              }
+            } catch (embedError) {
+              console.error(`Embedding error for ${method.toUpperCase()} ${path}:`, embedError);
+              results.failed++;
+              results.errors.push({ path, method, error: embedError });
+              continue;
+            }
+
+            const { data: existing, error: fetchError } = await supabase
+              .from('api_embeddings')
+              .select('*')
+              .match({
+                base_url: baseUrl,
+                endpoint_path: path,
+                http_method: method.toUpperCase()
+              })
+              .maybeSingle();
+
+            if (fetchError) {
+              console.error(`Fetch error for ${method} ${path}:`, fetchError);
+              results.failed++;
+              results.errors.push({ path, method, error: fetchError });
+              continue;
+            }
+
+            // Create metadata with endpoint structure based on what's available
+            const metadata = {
+              openApiSchema: docsData,
+              endpointSchema: op,
+              function_type: "lambda",
+            };
+
+            if (existing) {
+              // 2) Update existing
+              const { error: updateError } = await supabase
+                .from('api_embeddings')
+                .update({
+                  doc_text: docText,
+                  embedding,
+                  metadata,
+                  updated_at: new Date().toISOString()
+                })
+                .eq('id', existing.id);
+
+              if (updateError) {
+                console.error(`Update error for ${method} ${path}:`, updateError);
+                results.failed++;
+                results.errors.push({ path, method, error: updateError });
+              } else {
+                console.log(`Updated embedding for ${method} ${path}`);
+                results.success++;
+              }
+            } else {
+              // 3) Insert new
+              const { error: insertError } = await supabase
+                .from('api_embeddings')
+                .insert({
+                  bot_project_id: null,
+                  origin_client_request_id: null,
+                  user_id: null,
+                  base_url: baseUrl,
+                  endpoint_path: path,
+                  http_method: method.toUpperCase(),
+                  schema_path: null,
+                  doc_text: docText,
+                  embedding,
+                  is_public: true,
+                  stage: STAGE.toUpperCase(),
+                  metadata,
+                });
+
+              if (insertError) {
+                console.error(`Insert error for ${method} ${path}:`, insertError);
+                results.failed++;
+                results.errors.push({ path, method, error: insertError });
+              } else {
+                console.log(`Inserted embedding for ${method} ${path}`);
+                results.success++;
+              }
+            }
+            return true;
+          } catch (error) {
+            console.error(`Error deploying sls function for package ${packageName}:`, error);
+            return false;
+          }
+        }
+      }
+    }
     return true;
   } catch (error) {
     console.error(`Error deploying sls function for package ${path.basename(packagePath)}:`, error);

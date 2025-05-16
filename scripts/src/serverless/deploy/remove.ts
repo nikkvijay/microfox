@@ -1,7 +1,8 @@
 import { execSync } from 'child_process';
 import * as path from 'path';
 import * as fs from 'fs';
-import { BASE_SERVER_URL, STAGE } from './constants';
+import { STAGE } from './constants';
+import { createClient } from '@supabase/supabase-js';
 
 /**
  * Remove a Serverless function
@@ -30,20 +31,15 @@ async function removePackageSls(packagePath: string): Promise<boolean> {
     execSync(removeCommand, { stdio: 'inherit' });
     console.log('Function removed successfully');
 
-    const deleteResponse = await fetch(
-      `${BASE_SERVER_URL}/api/client-functions/public?package_name=${packageName}`,
-      {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-          'microfox-api-key': `${process.env.MICROFOX_API_KEY}`,
-        },
-      }
+    const supabase = createClient(
+      process.env.SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!
     );
 
-    if (!deleteResponse.ok) {
-      throw new Error(`Failed to delete function from database: ${deleteResponse.statusText}`);
-    }
+    const { data, error } = await supabase
+      .from('public_deployments')
+      .delete()
+      .eq('package_name', packageName);
 
     console.log('Function deleted successfully from database');
 

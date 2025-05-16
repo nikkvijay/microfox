@@ -52,14 +52,10 @@ describe('Slack SDK Validation and Error Handling', () => {
   };
 
   let slackSDK: ReturnType<typeof createSlackSDK>;
-  let restSdkModule: any;
 
   beforeEach(async () => {
     // Clear all mocks before each test
     vi.clearAllMocks();
-
-    // Import the mocked module to access it in the tests
-    restSdkModule = await import('@microfox/rest-sdk');
 
     // Create a new SDK instance for each test
     slackSDK = createSlackSDK(mockConfig);

@@ -1,0 +1,33 @@
+service: public-aws-ses-api
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: us-east-1
+  stage: ${env:ENVIRONMENT, 'dev'}
+  environment: ${file(env.json)}
+
+plugins:
+  - serverless-plugin-typescript
+
+functions:
+  unifiedHandler:
+    handler: dist/index.handler
+    events:
+      - http:
+          path: /{functionName}
+          method: any
+          cors: true
+          
+resources:
+  Outputs:
+    ApiEndpoints:
+      Description: "API Endpoints"
+      Value:
+        Fn::Join:
+          - ""
+          - - "API: https://"
+            - Ref: "ApiGatewayRestApi"
+            - ".execute-api."
+            - Ref: "AWS::Region"
+            - "/${env:ENVIRONMENT, 'dev'}"

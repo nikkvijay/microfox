@@ -1,5 +1,13 @@
 # @microfox/slack-oauth
 
+## 1.0.5
+
+### Patch Changes
+
+- 7cd211d: Changes from PR #251: brave
+- 6b039fe: Changes from PR #255: brave
+- 1d313a1: Changes from PR #253: brave
+
 ## 1.0.4
 
 ### Patch Changes

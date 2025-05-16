@@ -1,5 +1,13 @@
 # @microfox/aws-ses
 
+## 1.1.2
+
+### Patch Changes
+
+- 7cd211d: Changes from PR #251: brave
+- Updated dependencies [7cd211d]
+  - @microfox/rest-sdk@1.0.5
+
 ## 1.1.1
 
 ### Patch Changes

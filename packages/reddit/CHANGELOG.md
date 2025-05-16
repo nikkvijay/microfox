@@ -1,5 +1,13 @@
 # @microfox/reddit
 
+## 1.1.1
+
+### Patch Changes
+
+- 7cd211d: Changes from PR #251: brave
+- Updated dependencies [7cd211d]
+  - @microfox/reddit-oauth@1.1.4
+
 ## 1.1.0
 
 ### Minor Changes

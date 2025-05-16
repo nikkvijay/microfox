@@ -1,5 +1,11 @@
 # @microfox/whatsapp-business
 
+## 1.2.3
+
+### Patch Changes
+
+- 7cd211d: Changes from PR #251: brave
+
 ## 1.2.2
 
 ### Patch Changes

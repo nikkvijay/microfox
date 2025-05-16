@@ -1,5 +1,14 @@
 # @microfox/youtube
 
+## 1.0.5
+
+### Patch Changes
+
+- 7cd211d: Changes from PR #251: brave
+- Updated dependencies [7cd211d]
+  - @microfox/google@1.1.2
+  - @microfox/rest-sdk@1.0.5
+
 ## 1.0.4
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 import { createSlackSDK } from '@microfox/slack-web-tiny';
 import dotenv from 'dotenv';
-import { loadEnvFromQuery } from './utils/env.js';
+import { loadEnvFromQuery } from './utils.js';
 
 dotenv.config(); // for any local vars
 

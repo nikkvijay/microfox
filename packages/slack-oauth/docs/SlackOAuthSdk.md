@@ -29,7 +29,7 @@ const slackOAuth = new SlackOAuthSdk({
   clientId: process.env.SLACK_CLIENT_ID!,
   clientSecret: process.env.SLACK_CLIENT_SECRET!,
   redirectUri: process.env.SLACK_REDIRECT_URI!,
-  scopes: ['chat:write', 'channels:read'],
+  scopes: process.env.SCOPES,
 });
 
 // Example 2: Full usage with all optional arguments
@@ -37,7 +37,7 @@ const slackOAuth = new SlackOAuthSdk({
   clientId: process.env.SLACK_CLIENT_ID!,
   clientSecret: process.env.SLACK_CLIENT_SECRET!,
   redirectUri: process.env.SLACK_REDIRECT_URI!,
-  scopes: ['chat:write', 'channels:read'],
+  scopes: process.env.SCOPES,
   userScopes: ['identity.basic'],
   team: 'T12345678',
   isGovSlack: true,

@@ -86,6 +86,85 @@
         }
       ],
       "functionalities": ["sendMessage", "updateMessage", "uploadFile"]
+    },
+    {
+      "name": "OAuthWebClient",
+      "description": "Create a new Microfox Slack Web Tiny client through which you can interact with the API",
+      "auth": "oauth2",
+      "authSdk": "@microfox/slack-oauth",
+      "authEndpoint": "/connect/slack-oauth",
+      "requiredKeys": [],
+      "internalKeys": [
+        {
+          "key": "SLACK_CLIENT_ID",
+          "displayName": "Slack Client ID",
+          "description": "The client ID for Slack OAuth. You can obtain this from your Slack App settings."
+        },
+        {
+          "key": "SLACK_CLIENT_SECRET",
+          "displayName": "Slack Client Secret",
+          "description": "The client secret for Slack OAuth. You can obtain this from your Slack App settings."
+        },
+        {
+          "key": "SLACK_ACCESS_TOKEN",
+          "displayName": "Slack Access Token",
+          "description": "The access token for Slack OAuth. This token is used to authenticate requests to the Slack API."
+        },
+        {
+          "key": "SCOPES",
+          "displayName": "Scopes",
+          "description": "The scopes for Slack OAuth authentication. This is used to specify the permissions that the client application needs.",
+          "defaultValue": [
+            "app_mentions:read",
+            "assistant:write",
+            "channels:history",
+            "channels:join",
+            "channels:read",
+            "channels:manage",
+            "chat:write",
+            "chat:write.customize",
+            "commands",
+            "files:read",
+            "files:write",
+            "groups:history",
+            "groups:write",
+            "groups:write.invites",
+            "groups:read",
+            "im:read",
+            "im:write",
+            "reactions:read",
+            "reactions:write",
+            "reminders:read",
+            "reminders:write",
+            "users:read.email",
+            "users:read",
+            "users.profile:read",
+            "metadata.message:read"
+          ]
+        }
+      ],
+      "botConfig": [
+        {
+          "key": "SLACK_AUTHOR_NAME",
+          "displayName": "Bot Name",
+          "description": "Name that will appear as the message sender",
+          "ui": {
+            "type": "text",
+            "label": "Bot Name",
+            "placeholder": "Enter bot name"
+          }
+        },
+        {
+          "key": "SLACK_ICON_URL",
+          "displayName": "Bot Icon",
+          "description": "Icon that will appear as the bot's avatar",
+          "ui": {
+            "type": "image",
+            "label": "Bot Icon"
+          }
+        }
+      ],
+      "functionalities": ["allFunctionalities"]
     }
   ],
   "keysInfo": [

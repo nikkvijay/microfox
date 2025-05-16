@@ -1,5 +1,5 @@
 import path from 'path';
-import { PackageFoxRequest } from './process-issue';
+import { PackageFoxRequest } from '../../process-issue';
 import fs from 'fs';
 import { fixPackage } from './fixPackage';
 

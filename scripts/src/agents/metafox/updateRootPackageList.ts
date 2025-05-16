@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { PackageInfo } from './types';
+import { PackageInfo } from '../../types';
 
 // Define interface for package data
 interface PackageData {

@@ -1,12 +1,12 @@
-import { buildPackage } from './utils/execCommands';
+import { buildPackage } from '../../utils/execCommands';
 import { fixPackage } from './fixPackage';
 import path from 'path';
 import fs from 'fs';
-import { prCommentor } from './octokit/octokit';
-import { updateBuildReport } from './octokit/commentReports';
-import { readUsageData } from './ai/usage/readUsageData';
-import { IssueDetails, PackageFoxRequest } from './process-issue';
-import { inMemoryStore } from './utils/InMemoryStore';
+import { prCommentor } from '../../octokit/octokit';
+import { updateBuildReport } from '../../octokit/commentReports';
+import { readUsageData } from '../../ai/usage/readUsageData';
+import { IssueDetails, PackageFoxRequest } from '../../process-issue';
+import { inMemoryStore } from '../../utils/InMemoryStore';
 
 const MAX_RETRIES = 5;
 

@@ -1,14 +1,14 @@
-import { generateSDK } from './genPackage';
-import { fixBuildIssues } from './fixBuildIssues';
+import { generateSDK } from './agents/packagefox/genPackage';
+import { fixBuildIssues } from './agents/packagefox/fixBuildIssues';
 import fs from 'fs';
 import path from 'path';
 import { PackageFoxRequest } from './process-issue';
-import { fixPackage } from './fixPackage';
-import { fixBug } from './fixBug';
+import { fixPackage } from './agents/packagefox/fixPackage';
+import { fixBug } from './agents/packagefox/fixBug';
 import { cleanupUsage } from './ai/usage/cleanupUsage';
-import { processGitHubUrl } from './genExtPackage';
-import { generateExternalDocs } from './genExtDocs';
-import { generateDocs } from './genDocs';
+import { processGitHubUrl } from './agents/packagefox/genExtPackage';
+import { generateExternalDocs } from './agents/docfox/genExtDocs';
+import { generateDocs } from './agents/docfox/genDocs';
 
 /**
  * This script is used to handle the PackageFox workflow.

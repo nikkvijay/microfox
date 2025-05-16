@@ -3,9 +3,9 @@ import path from 'path';
 import { Octokit } from 'octokit';
 import dotenv from 'dotenv';
 import { z } from 'zod';
-import { PackageInfo } from './types';
+import { PackageInfo } from '../../types';
 import { generateObject } from 'ai';
-import { models } from './ai/models';
+import { models } from '../../ai/models';
 
 // Load environment variables
 dotenv.config();

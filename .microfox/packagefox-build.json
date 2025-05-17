@@ -1,13 +1,3 @@
 {
-  "requests": [
-    {
-      "type": "pkg-create",
-      "query": "Fillout REST API SDK",
-      "url": "https://www.fillout.com/help/fillout-rest-api",
-      "notes": "Create a new SDK for Fillout based on their REST API.",
-      "issueNumber": 281,
-      "logs": "",
-      "error": ""
-    }
-  ]
+  "requests": []
 }

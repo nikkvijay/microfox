@@ -1,13 +1,3 @@
 {
-  "requests": [
-    {
-      "type": "pkg-create-oauth",
-      "query": "Create a package for fillout-oauth",
-      "url": "https://www.fillout.com/help/oauth-applications",
-      "notes": "Create a package for fillout-oauth",
-      "issueNumber": 272,
-      "logs": "",
-      "error": ""
-    }
-  ]
+  "requests": []
 }

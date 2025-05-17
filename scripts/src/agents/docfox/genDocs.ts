@@ -9,6 +9,7 @@ import { models } from '../../ai/models';
 import { logUsage } from '../../ai/usage/usageLogger';
 import { updateDocReport } from '../../octokit/commentReports';
 import { inMemoryStore } from '../../utils/InMemoryStore';
+import { getProjectRoot } from '../../utils/getProjectRoot';
 
 const execAsync = promisify(exec);
 
@@ -513,6 +514,7 @@ Generate documentation that is:
       - You MUST call \`saveConstructorDocs\` for the main constructor/class.
       - You MUST call \`saveEnvKeys\` and \`saveDependencies\` (even if empty).
       - You MUST call \`finalizeDocs\` ONLY after all other tool calls are complete.
+      - You 
     `;
 
     // Generation prompt remains largely the same, focusing on the source material
@@ -541,7 +543,7 @@ Generate documentation that is:
       - **Type Expansion**: Expand ALL types inline down to primitives. Document ALL possible values. NO external references.
       - **Env Keys**: Provide key, displayName, description, required status. Use generic names for OAuth2 (e.g., GOOGLE_ACCESS_TOKEN).
       - **Dependencies**: List only extra needed dependencies.
-      - **Tool Order**: Call save tools for constructor, ALL functions, env keys, dependencies. Then call \`finalizeDocs\`.
+      - **Tool Order**: Call save tools for constructor, ALL functions, env keys, dependencies. Then call \`finalizeDocs\` at the end.
     `;
 
     let allToolsCalled = false;
@@ -1129,7 +1131,7 @@ if (require.main === module) {
       process.exit(1);
     }
 
-    const packageDir = path.join(__dirname, '../../packages', packageName);
+    const packageDir = path.join(getProjectRoot(), 'packages', packageName);
 
     if (!fs.existsSync(packageDir)) {
       console.error(`Package directory not found: ${packageDir}`);

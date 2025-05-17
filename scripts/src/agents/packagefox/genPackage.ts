@@ -20,6 +20,7 @@ import {
   extractContentFromUrls,
   extractLinks,
 } from '../../utils/webScraper';
+import { getProjectRoot } from '../../utils/getProjectRoot';
 
 // Schema for SDK generation arguments
 const GenerateSDKArgsSchema = z.object({
@@ -79,7 +80,7 @@ export async function generateMetadata(
 
   // Get available OAuth packages
   let oauthPackages = fs
-    .readdirSync(path.join(__dirname, '../../packages'))
+    .readdirSync(path.join(getProjectRoot(), 'packages'))
     .filter(dir => dir.includes('-oauth'));
   oauthPackages = oauthPackages.map(pkg => `@microfox/${pkg}`);
   console.log(
@@ -95,6 +96,7 @@ export async function generateMetadata(
       The package name should be lowercase, use kebab-case, and have the prefix "@microfox/".
       Make the description clear and concise.
       Include relevant keywords (3-4 total).
+      packageName should never end with an -oauth or -sdk.
       
       For authType:
       - Use "oauth2" if the API primarily uses OAuth 2.0 for authentication (like Google, GitHub, or LinkedIn APIs)
@@ -121,7 +123,7 @@ export async function generateMetadata(
 
   // Create initial package structure to store research report
   const dirName = newMetadata.packageName.replace('@microfox/', '');
-  const packageDir = path.join(process.cwd(), '../packages', dirName);
+  const packageDir = path.join(getProjectRoot(), 'packages', dirName);
   if (!fs.existsSync(packageDir)) {
     fs.mkdirSync(packageDir, { recursive: true });
   }
@@ -380,7 +382,7 @@ async function summarizeContent(
 async function createInitialPackage(metadata: SDKMetadata): Promise<string> {
   // Convert @microfox/template-name to template-name for directory
   const dirName = metadata.packageName.replace('@microfox/', '');
-  const packageDir = path.join(process.cwd(), '../packages', dirName);
+  const packageDir = path.join(getProjectRoot(), 'packages', dirName);
   const srcDir = path.join(packageDir, 'src');
   const typesDir = path.join(srcDir, 'types');
   const schemasDir = path.join(srcDir, 'schemas');
@@ -651,7 +653,7 @@ export async function generateSDK(
     );
 
     let oauthPackages = fs
-      .readdirSync(path.join(__dirname, '../../packages'))
+      .readdirSync(path.join(getProjectRoot(), 'packages'))
       .filter(dir => dir.includes('-oauth'));
     console.log(`✅ Found ${oauthPackages.length} OAuth packages`);
     oauthPackages = oauthPackages.map(pkg => `@microfox/${pkg}`);
@@ -663,8 +665,8 @@ export async function generateSDK(
     if (metadata.authType === 'oauth2' && metadata.authSdk) {
       const oauthPackageName = metadata.authSdk.replace('@microfox/', '');
       const oauthReadmePath = path.join(
-        __dirname,
-        '../../packages',
+        getProjectRoot(),
+        'packages',
         oauthPackageName,
         'README.md',
       );
@@ -1023,7 +1025,7 @@ export async function generateSDK(
 
     // Clean up build request log
     const foxLogPath = path.join(
-      process.cwd()?.replace('/scripts', ''),
+      getProjectRoot(),
       '.microfox/packagefox-build.json',
     );
     try {

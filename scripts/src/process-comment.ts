@@ -167,6 +167,15 @@ async function processComment() {
       logs: details.logs,
       error: details.error,
     };
+
+    // Add packageName if it exists in environment
+    const packageName = process.env.PACKAGE_NAME;
+    if (packageName) {
+      jsonPayload.packageName = packageName.startsWith('@microfox/')
+        ? packageName
+        : `@microfox/${packageName}`;
+    }
+
     const jsonPayloadString = JSON.stringify(jsonPayload);
     console.log(`📦 JSON Payload: ${jsonPayloadString}`);
 

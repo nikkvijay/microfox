@@ -58,4 +58,14 @@ This usage data has been reset for the next session.`;
 
   // Write empty usage object
   fs.writeFileSync(usageFilePath, JSON.stringify({}, null, 2));
+
+  // Reset the requests
+  fs.writeFileSync(
+    path.join(
+      process.cwd().replace('/scripts', ''),
+      '.microfox',
+      'packagefox-build.json',
+    ),
+    JSON.stringify({ requests: [] }, null, 2),
+  );
 }

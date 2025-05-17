@@ -1,28 +1,143 @@
 {
   "name": "@microfox/fillout",
   "title": "Fillout REST API SDK",
-  "description": "TypeScript SDK for the Fillout REST API.",
+  "description": "TypeScript SDK for interacting with the Fillout REST API to manage forms, submissions, and webhooks.",
   "platformType": "tool",
   "path": "packages/fillout",
-  "dependencies": [
-    "zod"
-  ],
+  "dependencies": [],
   "status": "semiStable",
   "authEndpoint": "",
   "oauth2Scopes": [],
   "documentation": "https://www.npmjs.com/package/@microfox/fillout",
   "icon": "https://raw.githubusercontent.com/microfox-ai/microfox/refs/heads/main/logos/fillout.svg",
   "readme_map": {
-    "path": "/README.md",
+    "title": "Fillout REST API SDK",
     "description": "The full README for the Fillout REST API SDK",
-    "functionalities": []
+    "path": "https://github.com/microfox-ai/microfox/blob/main/packages/fillout/README.md",
+    "functionalities": [
+      "FilloutSDK",
+      "getForms",
+      "getFormMetadata",
+      "getAllSubmissions",
+      "getSubmissionById",
+      "deleteSubmissionById",
+      "createWebhook",
+      "removeWebhook",
+      "createSubmissions"
+    ],
+    "all_readmes": [
+      {
+        "path": "https://github.com/microfox-ai/microfox/blob/main/packages/fillout/docs/FilloutSDK.md",
+        "type": "constructor",
+        "extension": "md",
+        "functionality": "FilloutSDK",
+        "description": "Constructor for the FilloutSDK. Initializes the SDK with an API key."
+      },
+      {
+        "path": "https://github.com/microfox-ai/microfox/blob/main/packages/fillout/docs/getForms.md",
+        "type": "functionality",
+        "extension": "md",
+        "functionality": "getForms",
+        "description": "Retrieves a list of all forms."
+      },
+      {
+        "path": "https://github.com/microfox-ai/microfox/blob/main/packages/fillout/docs/getFormMetadata.md",
+        "type": "functionality",
+        "extension": "md",
+        "functionality": "getFormMetadata",
+        "description": "Retrieves metadata for a specific form."
+      },
+      {
+        "path": "https://github.com/microfox-ai/microfox/blob/main/packages/fillout/docs/getAllSubmissions.md",
+        "type": "functionality",
+        "extension": "md",
+        "functionality": "getAllSubmissions",
+        "description": "Retrieves all submissions for a specific form."
+      },
+      {
+        "path": "https://github.com/microfox-ai/microfox/blob/main/packages/fillout/docs/getSubmissionById.md",
+        "type": "functionality",
+        "extension": "md",
+        "functionality": "getSubmissionById",
+        "description": "Retrieves a single submission by ID."
+      },
+      {
+        "path": "https://github.com/microfox-ai/microfox/blob/main/packages/fillout/docs/deleteSubmissionById.md",
+        "type": "functionality",
+        "extension": "md",
+        "functionality": "deleteSubmissionById",
+        "description": "Deletes a single submission by ID."
+      },
+      {
+        "path": "https://github.com/microfox-ai/microfox/blob/main/packages/fillout/docs/createWebhook.md",
+        "type": "functionality",
+        "extension": "md",
+        "functionality": "createWebhook",
+        "description": "Creates a webhook for a specific form."
+      },
+      {
+        "path": "https://github.com/microfox-ai/microfox/blob/main/packages/fillout/docs/removeWebhook.md",
+        "type": "functionality",
+        "extension": "md",
+        "functionality": "removeWebhook",
+        "description": "Removes a webhook."
+      },
+      {
+        "path": "https://github.com/microfox-ai/microfox/blob/main/packages/fillout/docs/createSubmissions.md",
+        "type": "functionality",
+        "extension": "md",
+        "functionality": "createSubmissions",
+        "description": "Creates multiple submissions for a specific form."
+      }
+    ]
   },
-  "constructors": [],
-  "keysInfo": [],
+  "constructors": [
+    {
+      "name": "FilloutSDK",
+      "description": "Create a new Fillout REST API SDK client through which you can interact with the API",
+      "auth": "none",
+      "requiredKeys": [
+        {
+          "key": "FILLOUT_API_KEY",
+          "displayName": "Fillout API Key",
+          "description": "Fillout API Key",
+          "required": true
+        }
+      ],
+      "internalKeys": [],
+      "functionalities": [
+        "getForms",
+        "getFormMetadata",
+        "getAllSubmissions",
+        "getSubmissionById",
+        "deleteSubmissionById",
+        "createWebhook",
+        "removeWebhook",
+        "createSubmissions"
+      ]
+    }
+  ],
+  "keysInfo": [
+    {
+      "key": "FILLOUT_API_KEY",
+      "constructors": [
+        "FilloutSDK"
+      ],
+      "description": "Fillout API Key",
+      "required": true
+    }
+  ],
   "keyInstructions": {
     "link": "",
     "setupInfo": "To use the Fillout SDK, you need to obtain an API key from your Fillout dashboard. \n\n1. Log in to your Fillout account.\n2. Navigate to the API settings section.\n3. Generate a new API key.\n4. Store this API key securely, as it will be used to authenticate your requests.\n\nWhen initializing the SDK, you can provide the API key in one of two ways:\n\n1. As an environment variable:\n   Set the environment variable FILLOUT_API_KEY with your API key.\n\n2. Directly in the SDK constructor:\n   Pass the API key as a parameter when creating the SDK instance.\n\nExample usage:\n\n```typescript\nimport { createFilloutSDK } from '@microfox/fillout';\n\n// Using environment variable\nconst sdk = createFilloutSDK();\n\n// Or, passing the API key directly\nconst sdk = createFilloutSDK({ apiKey: 'your-api-key-here' });\n```\n\nMake sure to keep your API key confidential and never expose it in client-side code or public repositories."
   },
   "extraInfo": [],
-  "authType": "apikey"
+  "authType": "apikey",
+  "devDependencies": [
+    "@microfox/tsconfig",
+    "@types/node",
+    "tsup",
+    "typescript",
+    "zod"
+  ]
 }

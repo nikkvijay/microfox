@@ -9,6 +9,7 @@ import { models } from '../../ai/models';
 import { logUsage } from '../../ai/usage/usageLogger';
 import { updateDocReport } from '../../octokit/commentReports';
 import { inMemoryStore } from '../../utils/InMemoryStore';
+import { getProjectRoot } from '../../utils/getProjectRoot';
 
 const execAsync = promisify(exec);
 
@@ -1129,7 +1130,7 @@ if (require.main === module) {
       process.exit(1);
     }
 
-    const packageDir = path.join(__dirname, '../../packages', packageName);
+    const packageDir = path.join(getProjectRoot(), 'packages', packageName);
 
     if (!fs.existsSync(packageDir)) {
       console.error(`Package directory not found: ${packageDir}`);

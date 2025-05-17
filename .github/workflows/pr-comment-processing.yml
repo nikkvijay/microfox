@@ -87,7 +87,30 @@ jobs:
       - name: Install Script Dependencies
         run: cd scripts && npm install
 
-      - name: Run Comment Processing Script
+      - name: Get changed files in packages/
+        id: changed-files
+        uses: tj-actions/changed-files@v46.0.1
+        with:
+          files: packages/**
+          files_ignore: |
+            packages/*/node_modules/**
+            packages/*/dist/**
+            packages/*/build/**
+            packages/*/.turbo/**
+            packages/*/.next/**
+            packages/*/coverage/**
+
+      - name: Extract package name from changed files
+        id: extract-package
+        if: steps.changed-files.outputs.any_changed == 'true'
+        run: |
+          # Get the first changed package directory
+          PACKAGE_NAME=$(echo "${{ steps.changed-files.outputs.all_changed_files }}" | grep -oE 'packages/([^/]+)' | head -n 1 | sed 's|packages/||')
+          if [ -n "$PACKAGE_NAME" ]; then
+            echo "package_name=@microfox/$PACKAGE_NAME" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Process Comment
         id: comment_data
         run: cd scripts && npm run process-comment
         env:
@@ -96,6 +119,7 @@ jobs:
           PR_URL: ${{ github.event.issue.html_url }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PACKAGE_NAME: ${{ steps.extract-package.outputs.package_name }}
 
       - name: Prepare packagefox-build.json
         id: prepare_file

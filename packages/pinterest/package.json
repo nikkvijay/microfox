@@ -1,0 +1,74 @@
+{
+    "name": "@microfox/pinterest",
+    "version": "1.0.0",
+    "description": "Pinterest API SDK for Microfox - A comprehensive TypeScript SDK for Pinterest API integration",
+    "main": "dist/index.js",
+    "module": "dist/index.mjs",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "tsup",
+        "dev": "tsup --watch",
+        "clean": "rimraf dist",
+        "type-check": "tsc --noEmit",
+        "test": "jest",
+        "lint": "eslint src/**/*.ts",
+        "format": "prettier --write \"src/**/*.ts\"",
+        "prepare": "npm run build"
+    },
+    "keywords": [
+        "pinterest",
+        "api",
+        "sdk",
+        "typescript",
+        "microfox"
+    ],
+    "author": "Microfox Team",
+    "license": "MIT",
+    "dependencies": {
+        "axios": "^1.6.0",
+        "dotenv": "^16.5.0",
+        "zod": "^3.22.0"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.24.0",
+        "@babel/generator": "^7.24.0",
+        "@babel/template": "^7.24.0",
+        "@babel/traverse": "^7.24.0",
+        "@types/babel__core": "^7.20.5",
+        "@types/babel__generator": "^7.6.8",
+        "@types/babel__template": "^7.4.4",
+        "@types/babel__traverse": "^7.20.0",
+        "@types/jest": "^29.5.14",
+        "@types/node": "^20.0.0",
+        "@typescript-eslint/eslint-plugin": "^6.0.0",
+        "@typescript-eslint/parser": "^6.0.0",
+        "eslint": "^8.0.0",
+        "jest": "^29.5.0",
+        "prettier": "^3.0.0",
+        "rimraf": "^5.0.5",
+        "ts-jest": "^29.1.0",
+        "tsup": "^8.0.0",
+        "typescript": "^5.0.0"
+    },
+    "peerDependencies": {
+        "typescript": ">=4.9.0"
+    },
+    "engines": {
+        "node": ">=16.0.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/microfox-ai/microfox.git",
+        "directory": "packages/pinterest"
+    },
+    "bugs": {
+        "url": "https://github.com/microfox-ai/microfox/issues"
+    },
+    "homepage": "https://github.com/microfox-ai/microfox/tree/main/packages/pinterest#readme",
+    "publishConfig": {
+        "access": "public"
+    }
+}

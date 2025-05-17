@@ -1,1 +1,13 @@
-{"requests": []}
+{
+  "requests": [
+    {
+      "type": "genDocs",
+      "query": "generate docs for the package",
+      "url": "",
+      "notes": "Generate documentation for the packagefox package.",
+      "prNumber": 282,
+      "logs": "",
+      "error": ""
+    }
+  ]
+}

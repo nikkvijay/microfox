@@ -95,6 +95,7 @@ export async function generateMetadata(
       The package name should be lowercase, use kebab-case, and have the prefix "@microfox/".
       Make the description clear and concise.
       Include relevant keywords (3-4 total).
+      packageName should never end with an -oauth or -sdk.
       
       For authType:
       - Use "oauth2" if the API primarily uses OAuth 2.0 for authentication (like Google, GitHub, or LinkedIn APIs)
